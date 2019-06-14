@@ -1,0 +1,147 @@
+/* pages/tabDetails/tabJobInfo.wxss */
+
+.page {
+  /* border: 1rpx solid red; */
+  width: 93%;
+  margin: 0 auto;
+}
+
+.page__hd {
+  margin-top: 10rpx;
+}
+
+.page__hd .jobName .sm-gray {
+  color: #199ed8;
+  float: right;
+}
+
+.page__hd .jobASK {
+  padding: 20rpx 0;
+  border-bottom: 1px solid #999;
+}
+
+.page__hd .jobASK text {
+  margin: 0 10rpx;
+}
+
+.page__hd .jobHR {
+  padding: 20rpx;
+  height: 100rpx;
+  border-bottom: 1px solid #999;
+}
+
+.page__hd .jobHR image {
+  border: 1px solid #c3c3c3;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+}
+
+.page__hd .jobHR .hrName {
+  width: 400rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 130rpx;
+}
+
+.page__hd .jobHR .getMore {
+  font-size: 30rpx;
+  text-align: right;
+  position: absolute;
+  top: 30rpx;
+  right: 10rpx;
+}
+
+/* 内容部分 */
+
+.page__bd {
+  margin-top: 30rpx;
+}
+
+.page__bd .jobInfo {
+  padding: 10rpx 0;
+  border-bottom: 1px solid #999;
+}
+
+.page__bd .jobInfo_address map {
+  width: 100%;
+  height: 200px;
+}
+
+.jobInfo_int text {
+  line-height: 1rpx;
+}
+
+.jobInfo_skill text {
+  font-size: 0.7rem;
+  background-color: #c3c3c3;
+  padding: 3rpx 10rpx;
+  margin: 0 15rpx;
+  border-radius: 50rpx;
+}
+
+.jobInfo_welfare text {
+  font-size: 0.7rem;
+  background-color: #c3c3c3;
+  padding: 3rpx 10rpx;
+  margin: 0 15rpx;
+}
+
+.jobInfo_comInt .position {
+  padding: 20rpx;
+  height: 100rpx;
+}
+
+.jobInfo_comInt image {
+  border: 1px solid #c3c3c3;
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+}
+
+.jobInfo_comInt .comName {
+  width: 400rpx;
+  height: 100rpx;
+  position: absolute;
+  top: 30rpx;
+  left: 130rpx;
+}
+
+.jobInfo_comInt .getMore {
+  font-size: 30rpx;
+  text-align: right;
+  position: absolute;
+  top: 30rpx;
+  right: 10rpx;
+}
+
+.page__bd .jobInfo:last-child {
+  border: 0px;
+  padding-bottom: 150rpx;
+}
+
+.jobInfo_address map {
+  margin-top: 10rpx;
+}
+
+/* 立即沟通按钮 */
+
+.talkBtn {
+  position: fixed;
+  bottom: 0rpx;
+  width: 95%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+  background: white;
+}
+
+.talkBtn button {
+  background-color: #199ed8;
+  color: white;
+}

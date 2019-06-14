@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/register/thirdPage/jobExp",
+    "pages/tabBarPage/tab_JobList/tab_JobList",
+    "pages/tabBarPage/tab_Myinfo/tab_Myinfo",
+    "pages/tabBarPage/tab_Company/tab_Company",
+    "pages/tabBarPage/tab_Message/tab_Message",
+    "pages/tabBarPage/tab_Resume/tab_Resume",
+    "pages/register/firstPage/register",
+    "pages/register/secondPage/myInfo",
+    "pages/register/fourthPage/eduExp",
+    "pages/register/fifthPage/myAdv",
+    "pages/register/sixthPage/workTag",
+    "pages/login/longin",
+    "pages/tabDetails/tabJobInfo/tabJobInfo",
+    "pages/tabDetails/tabComInfo/tabComInfo",
+    "pages/tabDetails/comJobList/comJobList"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#199ED8",
+    "navigationBarTitleText": "叶联招聘",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/tabBarPage/tab_JobList/tab_JobList",
+        "text": "职位",
+        "iconPath": "images/jobList.png",
+        "selectedIconPath": "images/jobList_s.png"
+      },
+      {
+        "pagePath": "pages/tabBarPage/tab_Company/tab_Company",
+        "text": "公司",
+        "iconPath": "images/company.png",
+        "selectedIconPath": "images/company_s.png"
+      },
+      {
+        "pagePath": "pages/tabBarPage/tab_Message/tab_Message",
+        "text": "消息",
+        "iconPath": "images/message.png",
+        "selectedIconPath": "images/message_s.png"
+      },
+      {
+        "pagePath": "pages/tabBarPage/tab_Resume/tab_Resume",
+        "text": "简历",
+        "iconPath": "images/resume.png",
+        "selectedIconPath": "images/resume_s.png"
+      },
+      {
+        "pagePath": "pages/tabBarPage/tab_Myinfo/tab_Myinfo",
+        "text": "我的",
+        "iconPath": "images/myInfo.png",
+        "selectedIconPath": "images/myInfo_s.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

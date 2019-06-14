@@ -1,0 +1,137 @@
+<!--pages/tabBarPage/tab_Resume/tab_Resume.wxml-->
+<view class='page'>
+
+  <view class='page__hd'>
+    <view class='yl-row center-view'>
+      <view class='yl-fgrow1'>
+        <icon class='iconfont icon-xiugai'></icon>
+        <text>修改简历</text>
+      </view>
+      <view class='yl-fgrow1'>
+        <icon class='iconfont icon-wenjian'></icon>
+        <text>附件简历</text>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class='page__bd'>
+
+    <view class='section center-view myInfo'>
+      <view class='yl-row'>
+      
+        <view class='yl-fgrow2'>
+          <view class='lg-black'>
+            <text>简历人</text>
+          </view>
+
+          <view class='md-gray'>
+            <text>当前职位</text>
+            <text>\t·\t</text>
+            <text>当前就职公司</text>
+          </view>
+
+        </view>
+
+        <view class='hP'>
+          <image src='../../../images/hP.jpg' mode='scaleToFill'></image>
+        </view>
+
+      </view>
+    </view>
+
+    <view class='section center-view myJob md-black'>
+      <view class='myJobTitle'>
+        <text>在职</text>
+        <text>\t - \t</text>
+        <text>暂不考虑</text>
+      </view>
+
+      <view class='myJobItem'>
+        <icon class='iconfont icon-rili'></icon>
+        <text>25岁</text>
+        <icon class='iconfont icon-xueli'></icon>
+        <text>大专</text>
+        <icon class='iconfont icon-lingdai'></icon>
+        <text>5年</text>
+        <view>
+          <text>自我介绍:自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='section center-view md-black myJobExpect '>
+      <view>
+        <text class='fontSix'>求职期望</text>
+      </view>
+      <view class='yl-row'>
+        <view class='yl-fgrow2'>
+          <text>Java</text>
+          <text>广州</text>
+        </view>
+        <view class='expMoneny'>
+          <text>11K</text>
+          <text>\t - \t</text>
+          <text>12K</text>
+        </view>
+      </view>
+      <view class='md-gray jobExpect'>
+        <text>行业不限</text>
+      </view>
+    </view>
+
+    <view class='section center-view md-black myJobExp'>
+      <view>
+        <text class='fontSix'>工作经验</text>
+      </view>
+
+      <view class='yl-row'>
+        <view class='yl-fgrow2'>
+          <text>就职过的公司名称</text>
+        </view>
+        <view>
+          <text>当时的职位</text>
+        </view>
+      </view>
+
+      <view>
+        <text>2017.01.02</text>
+        <text>\t - \t</text>
+        <text>2017.01.02</text>
+      </view>
+
+      <view class='workTag'>
+        <view class='workDetails'>
+          <text class='fontSix'>工作内容：</text>
+          <text class='md-gray'>工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容</text>
+        </view>
+        <view class='tagItem'>
+          <text>标签文字</text>
+          <text>标签文字</text>
+          <text>标签文字</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='section center-view md-black myEduExp '>
+      <view>
+        <text class='fontSix'>教育经验</text>
+      </view>
+
+      <view class='sName'>
+        <text>就读过的学校名字</text>
+      </view>
+
+      <view class='md-gray'>
+        <text>学历</text>
+        <text>\t · \t</text>
+        <text>院系</text>
+      </view>
+
+    </view>
+
+  </view>
+
+
+</view>

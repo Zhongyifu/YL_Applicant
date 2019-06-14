@@ -1,0 +1,116 @@
+/* pages/tabDetails/comJobList/comJobList.wxss */
+
+.btnList .searchIcon {
+  border-left: 1px solid white;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+}
+
+.btnList icon {
+  font-size: 1.0rem;
+  color: white;
+}
+
+.orderList {
+  height: 2rem;
+  text-align: center;
+  line-height: 1.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.orderList text {
+  font-size: 1rem;
+}
+
+.orderIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* 顶部样式 end */
+
+.page__bd .listItem {
+  border-bottom: 5px solid #f2f2f2;
+  font-size: 1rem;
+  padding: 1rem 1rem 0.3rem 1rem;
+}
+
+.listItem view {
+  margin-bottom: 0.2rem;
+}
+
+.listItem .fl2 {
+  float: right;
+  font-size: 30rpx;
+  color: #199ed8;
+}
+
+.listItem .sm-gray text {
+  margin-left: 0.5rem;
+}
+
+.listItem .sm-gray .fl1 {
+  margin-left: 0rem;
+}
+
+.listItem .md-black text {
+  font-size: 28rpx;
+  color: #b7b7b7;
+}
+
+.listItem .sm-gray text {
+  font-size: 25rpx;
+  color: #c3c3c3;
+}
+
+/* HR头像 */
+
+.hrHp {
+  border: 1px solid white;
+  position: relative;
+}
+
+.hrHp image {
+  position: absolute;
+  top: 12rpx;
+  left: 10rpx;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.hrHp view {
+  margin-left: 70rpx;
+  margin-top: 20rpx;
+}
+
+.hrHp text {
+  margin: 0 5rpx;
+}
+
+/* 职位名称超出显示省略 */
+
+.jobTitle {
+  height: 60rpx;
+}
+
+.jobName {
+  width: 75%;
+  float: left;
+}
+
+.jobName text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cnn {
+  border: 1px solid red;
+}
+
+
+

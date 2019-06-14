@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "select-modal":"/components/modal/modal"
+  }
+}

@@ -1,0 +1,224 @@
+@import "weui.wxss";
+
+/**app.wxss**/
+
+.position {
+  position: relative;
+}
+
+/* 搜索框：placeholder */
+
+.phcolor {
+  color: white;
+}
+
+/* 顶部搜索部分 */
+
+.page__hd {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.page__hd input {
+  width: 100%;
+  padding-left: 0.5rem;
+  color: white;
+}
+
+.searchList {
+  background-color: #199ed8;
+}
+
+/* 自编的栅格系统 */
+
+.yl-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.yl-col-6 {
+  width: 50%;
+}
+
+.yl-col-4 {
+  width: 25%;
+}
+
+.yl-fgrow2 {
+  flex-grow: 2;
+}
+
+.yl-fgrow1 {
+  flex-grow: 1;
+}
+
+/* 关于字体的定义 */
+
+.fontSix {
+  font-weight: 700;
+}
+
+.sm-gray {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.md-gray {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.lg-gray {
+  font-size: 1rem;
+  color: #999;
+}
+
+.lg-black {
+  font-size: 1.2rem;
+  color: black;
+}
+
+.md-black {
+  font-size: 0.8rem;
+  color: black;
+}
+
+.sm-black {
+  font-size: 0.7rem;
+  color: black;
+}
+
+/* 仿写<hr/> */
+
+.line {
+  margin: 0 auto;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  height: 2rpx;
+  background-color: #d8d8d8;
+}
+
+/* “到底了” line*/
+
+.bottomLine {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* 带灰色下边线的view */
+
+.center-view {
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid #ccc;
+}
+
+/* 登录注册页面 */
+
+.topArea {
+  height: 150rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 150rpx;
+}
+
+/* 关于图标的定义 */
+
+@font-face {
+  font-family: 'iconfont'; /* project id 1122099 */
+  src: url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.eot');
+  src: url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.eot?#iefix') format('embedded-opentype'),
+         url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.woff2') format('woff2'),
+         url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.woff') format('woff'),
+         url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_1122099_ocn6kqs6zdk.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-guanzhu:before {
+  content: "\e601";
+}
+
+.icon-wenjian:before {
+  content: "\e606";
+}
+
+.icon-wenjian1:before {
+  content: "\e630";
+}
+
+.icon-wenjian2:before {
+  content: "\e60f";
+}
+
+.icon-jiahao:before {
+  content: "\e665";
+}
+
+.icon-arrow-down:before {
+  content: "\e605";
+}
+
+.icon-arrow-up:before {
+  content: "\e607";
+}
+
+.icon-tixing:before {
+  content: "\e681";
+}
+
+.icon-shezhi:before {
+  content: "\e67a";
+}
+
+.icon-lingdai:before {
+  content: "\e63c";
+}
+
+.icon-saoma:before {
+  content: "\e615";
+}
+
+.icon-jiankuohaoxizuo:before {
+  content: "\e600";
+}
+
+.icon-xiugai:before {
+  content: "\e637";
+}
+
+.icon-r_j:before {
+  content: "\e602";
+}
+
+.icon-weixin:before {
+  content: "\e69f";
+}
+
+.icon-zhexiantu2:before {
+  content: "\e672";
+}
+
+.icon-xueli:before {
+  content: "\e603";
+}
+
+.icon-rili:before {
+  content: "\e693";
+}
+
+.icon-weibiaoti--:before {
+  content: "\e63a";
+}

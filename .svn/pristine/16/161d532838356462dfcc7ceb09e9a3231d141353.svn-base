@@ -1,0 +1,55 @@
+/* pages/tab_JobList.wxss */
+
+.btnList .searchIcon {
+  border-left: 1px solid white;
+  padding-left: 0.5rem;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
+}
+
+.btnList .icon-jiahao {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.orderList {
+  height: 2rem;
+  text-align: center;
+  line-height: 1.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.orderList text {
+  font-size: 1rem;
+}
+
+.orderIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* 顶部样式 end */
+
+.page__bd .listItem {
+  border-bottom: 5px solid #f2f2f2;
+  font-size: 1rem;
+  padding: 1rem 1rem 0.3rem 1rem;
+}
+
+.listItem view {
+  margin-bottom: 0.2rem;
+}
+
+.listItem .fl2 {
+  float: right;
+  color: #199ed8;
+}
+
+.listItem .sm-gray text {
+  margin-left: 0.5rem;
+}
+
+.listItem .sm-gray .fl1 {
+  margin-left: 0rem;
+}
+

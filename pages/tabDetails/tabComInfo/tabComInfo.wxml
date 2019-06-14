@@ -1,0 +1,166 @@
+<!-- 公司详情 -->
+<view class='page'>
+  <view class='page_hd'>
+    <!-- 公司名称，头像 -->
+    <view class='yl-row'>
+      <view class='yl-col-8'>
+        <view>
+          <text class='fontSix'>公司名称</text>
+        </view>
+        <view class='sm-gray'>
+          <text>融资情况\t-</text>
+          <text>人数\t-</text>
+          <text>所属行业</text>
+        </view>
+      </view>
+      <view class='yl-col-2 comHp'>
+        <image src='../../../images/hP.jpg'></image>
+      </view>
+    </view>
+    <!-- 公司作息及福利 -->
+    <view class='fuli sm-black'>
+      <text class='inleft'>1.\t8:20am\t - \t 17：40pm</text>
+      <text class='inright'>2.\t周末双休</text>
+      <text class='inleft'>3.\t偶尔加班</text>
+      <text class='inright'>4.\t下午茶</text>
+      <text class='inleft'>5.\t公司组织旅游</text>
+    </view>
+
+    <!-- 公司具体福利 -->
+    <view class='fuli'>
+      <text class='sm-black'>公司其他的具体福利</text>
+    </view>
+  </view>
+
+  <view class='page_bd'>
+    <!-- 公司介绍 -->
+    <view class='comInfp'>
+      <text class='fontSix'>公司介绍</text>
+      <view class='comInfoText {{isCheckText.status ? "hiddenText" : ""}}'>
+        <text class='sm-gray'>公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍公司介绍</text>
+      </view>
+      <!-- 点击查看更多/收起 -->
+      <view class='showMore' bindtap='showMoreText'>{{isCheckText.tip}}</view>
+    </view>
+
+    <!-- 公司照片 -->
+    <view class='comInfp'>
+      <text class='fontSix'>公司照片</text>
+      <scroll-view class='comPhoto' scroll-x='true'>
+        <block wx:for='{{comPhotoList}}' wx:for-item='photoItem' wx:key='comPhoto'>
+          <image src='{{photoItem}}' data-src='{{photoItem}}' bindtap='previewPhoto'></image>
+        </block>
+      </scroll-view>
+    </view>
+
+    <!-- 公司地址 -->
+    <view class='comInfp'>
+      <text class='fontSix'>公司地址</text>
+      <view class='comAddress'>
+        <map id='comAddress' longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}"></map>
+      </view>
+    </view>
+
+    <!-- 公司官网地址 -->
+    <view class='comInfp'>
+      <text class='fontSix'>公司官网地址</text>
+      <view>
+        <text class='md-black'>http://www.baidu.com</text>
+      </view>
+    </view>
+
+    <!-- 公司的工商局备案信息 -->
+    <view class='comInfp'>
+      <text class='fontSix'>工商局备案信息</text>
+      <view>
+      <!-- part.1 -->
+      <view class='md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>企业法人</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>XXX</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.2 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>注册资本</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>10000万人民币</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.3 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>成立时间</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>2012-12-21</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.4 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>经营状态</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>存续（在营、开业、在册）</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.5 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>注册地址</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>深圳市南山区南山街道南山大道1088号南园枫叶大厦10-F号</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.6 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>统一信用代码</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>91440300597750241G</text>
+          </view>
+        </view>
+      </view>
+      <!-- part.7 -->
+      <view class=' md-black'>
+        <view class='weui-cell'>
+          <view class='weui-cell__bd'>
+            <text>经营范围</text>
+          </view>
+          <view class='weui-cell__ft'>
+            <text>网络技术开发，网上从事广告业务，软件开发及计算机硬件销售，</text>
+          </view>
+        </view>
+      </view>
+</view>
+<!-- 点击查看更多/收起 -->
+<view class='showMore'>
+
+</view>
+
+    </view>
+  </view>
+
+  <!-- 浮动层，用于跳转至该公司的招聘职位列表 -->
+  <view class='getMore'>
+    <button class='weui-btn weui-btn_primary' bindtap='getJobList'>查看公司招聘列表</button>
+  </view>
+</view>

@@ -1,0 +1,86 @@
+var util = require('../../../utils/util.js'),
+  app = getApp(),
+  url = app.baseUrl;
+Page({
+
+  data: {
+    salaryList: [
+      ['请选择月薪', '3K及以下', '5K', '7K', '9K', '10K', '11K', '12K', '15K', '20K', '25K及以上'],
+      ['5K', '7K', '9K', '10K', '11K', '12K', '15K', '20K', '25K及以上']
+    ],
+    salaryItem: [0, 0],
+    isSalaryChange: false,
+
+    maritalList: ['未婚', '已婚', '离异', '丧偶'],
+    maritalItem: 0,
+    isMaritalChange: false,
+
+    startDay: '1951-01-01',
+    endDay: '',
+    nowDate: '',
+
+    birthdayDate: '',
+    isBirthdayChange: false,
+
+    jobDate: '',
+    isJobChange: false,
+
+    sex: '',
+    hPUrl: '',
+  },
+  //月薪
+  salayChange: function(e) {
+    let _that = this;
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    _that.setData({
+      salaryItem: e.detail.value,
+      isSalaryChange: true
+    })
+  },
+  salaryColChage: function(e) {
+    let _that = this;
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value)
+  },
+  //婚姻情况
+  maritalChange: function(e) {
+    let _that = this;
+    _that.setData({
+      maritalItem: e.detail.value,
+      isMaritalChange: true
+    });
+  },
+  //出生年月
+  birthdayChange: function(e) {
+    let _that = this;
+    _that.setData({
+      isBirthdayChange: true,
+      birthdayDate: e.detail.value
+    });
+  },
+  //参加工作的时间
+  jobExpChange: function(e) {
+    let _that = this;
+    console.log(_that.data.endDay)
+    _that.setData({
+      jobDate: e.detail.value,
+      isJobChange: true
+    });
+  },
+  //性别
+  sexChanage: function(e) {
+    let _that = this;
+    console.log(e)
+    _that.setData({
+      sex: e.detail.value
+    });
+  },
+  //获取当前日期
+  onLoad: function(e) {
+    let _that = this,
+      nowTime = util.formatTime(new Date());
+    _that.setData({
+      endDay: nowTime,
+    });
+  },
+
+})

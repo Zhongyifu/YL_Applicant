@@ -1,0 +1,26 @@
+/* pages/register/firstPage/register.wxss */
+
+.inputArea .weui-cells {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.inputArea .weui-cell {
+  border-bottom: 1px solid #ccc;
+}
+
+.inputArea .weui-cells:before {
+  border: 0;
+}
+
+.inputArea .weui-cells:after {
+  border: 0;
+}
+
+.inputArea .weui-cell:before {
+  border: 0;
+}
+
+.inputArea .weui-cell__ft button{
+  font-size: 25rpx;
+}
