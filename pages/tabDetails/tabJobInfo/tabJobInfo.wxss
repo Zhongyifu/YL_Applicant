@@ -1,23 +1,31 @@
 /* pages/tabDetails/tabJobInfo.wxss */
 
 .page {
-  /* border: 1rpx solid red; */
-  width: 93%;
+  width: 90%;
   margin: 0 auto;
 }
 
-.page__hd {
-  margin-top: 10rpx;
+.icon-r_j {
+  font-size: 25px;
 }
 
-.page__hd .jobName .sm-gray {
+.page__hd {
+  margin-top: 30px;
+}
+
+.page__hd .jobName text:first-child {
+  font-size: 23px;
+}
+
+.page__hd .jobName text:last-child {
   color: #199ed8;
   float: right;
+  font-size: 15px;
 }
 
 .page__hd .jobASK {
   padding: 20rpx 0;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ccc;
 }
 
 .page__hd .jobASK text {
@@ -27,7 +35,7 @@
 .page__hd .jobHR {
   padding: 20rpx;
   height: 100rpx;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #ccc;
 }
 
 .page__hd .jobHR image {
@@ -44,16 +52,16 @@
   width: 400rpx;
   height: 100rpx;
   position: absolute;
-  top: 30rpx;
+  top: 13px;
   left: 130rpx;
 }
 
 .page__hd .jobHR .getMore {
-  font-size: 30rpx;
   text-align: right;
   position: absolute;
   top: 30rpx;
   right: 10rpx;
+  font-size: 25px;
 }
 
 /* 内容部分 */
@@ -67,28 +75,25 @@
   border-bottom: 1px solid #999;
 }
 
+.page__bd .jobInfo view:first-child {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000;
+}
+
 .page__bd .jobInfo_address map {
   width: 100%;
   height: 200px;
 }
 
-.jobInfo_int text {
-  line-height: 1rpx;
-}
-
-.jobInfo_skill text {
-  font-size: 0.7rem;
-  background-color: #c3c3c3;
-  padding: 3rpx 10rpx;
-  margin: 0 15rpx;
-  border-radius: 50rpx;
-}
-
-.jobInfo_welfare text {
-  font-size: 0.7rem;
-  background-color: #c3c3c3;
-  padding: 3rpx 10rpx;
-  margin: 0 15rpx;
+.jobInfo .select-items {
+  border: 1px solid #199ed8;
+  border-radius: 10%;
+  font-size: 0.9rem;
+  padding: 0rpx 10rpx;
+  margin: 5px 10px 5px 0px;
+  display: inline-block;
 }
 
 .jobInfo_comInt .position {
@@ -123,7 +128,7 @@
 
 .page__bd .jobInfo:last-child {
   border: 0px;
-  padding-bottom: 150rpx;
+  padding-bottom: 170rpx;
 }
 
 .jobInfo_address map {
@@ -136,12 +141,52 @@
   position: fixed;
   bottom: 0rpx;
   width: 95%;
+  height: 60px;
   margin: 0 auto;
-  padding: 20rpx 0;
+  padding-bottom: 30rpx;
+  padding-top: 10px;
   background: white;
+  z-index: 999;
+  border-top: 1px solid #ccc;
 }
 
-.talkBtn button {
+/* 按钮组 */
+
+.followJob {
+  width: 25%;
+  height: 35px;
+  float: left;
+  position: relative;
+  margin-left: 20px;
+  color: #199ed8;
+  border: 1px solid #199ed8;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.followJob image {
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+.followJob text {
+  position: absolute;
+  top: 4px;
+  left: 45px;
+}
+
+.message {
+  width: 50%;
+  height: 35px;
+  line-height: 35px;
+  font-size: 16px;
   background-color: #199ed8;
   color: white;
+}
+
+.weui-btn + .weui-btn {
+  margin-top: 0px;
 }

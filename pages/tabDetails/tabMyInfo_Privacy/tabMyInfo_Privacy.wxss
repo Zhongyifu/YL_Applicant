@@ -1,0 +1,103 @@
+/* pages/tabDetails/tabMyInfo_Privacy/tabMyInfo_Privacy.wxss */
+
+.page_hd {
+  text-align: center;
+  padding: 20px;
+}
+
+.page_bd {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.search-item {
+  border: 1px solid #ccc;
+}
+
+.search-item .ltext {
+  padding: 10px;
+}
+
+.search-item .rimg {
+  width: 50px;
+  height: 45px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #f3f4f7;
+}
+
+.search-item image {
+  width: 20px;
+  height: 20px;
+}
+
+.getMore {
+  position: fixed;
+  bottom: 0rpx;
+  left: 20px;
+  width: 90%;
+  padding-bottom: 30rpx;
+  background: white;
+}
+
+.search-modal .mask {
+  top: 0px;
+}
+
+.search-modal .mymodal {
+  width: 95%;
+  left: 10px;
+}
+
+.search-input {
+  width: 75%;
+  padding-left: 10px;
+  border-bottom: 1px solid #199de8;
+}
+
+.search-btn {
+  width: 25%;
+}
+
+.search-btn button {
+  width: 80%;
+  height: 35px;
+  margin-right: 0px;
+}
+
+.search-btn button icon {
+  margin-top: -13px;
+}
+
+.search-list {
+  margin-top: 25px;
+}
+
+.search-modal .search-item {
+  margin-top: 10px;
+  padding: 0px;
+}
+
+.search-modal .rimg {
+  line-height: 0px;
+  background-color: #fff;
+}
+
+.formBtn view {
+  box-sizing: border-box;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.formBtn .qx {
+  float: left;
+  border-right: 1px solid #ccc;
+}
+
+.formBtn .qr {
+  float: right;
+  color: #07c160;
+}

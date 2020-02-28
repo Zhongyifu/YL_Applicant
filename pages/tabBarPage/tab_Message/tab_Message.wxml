@@ -1,2 +1,46 @@
-<!--pages/tab_Message/tab_Message.wxml-->
-<text>pages/tab_Message/tab_Message.wxml</text>
+<view class='page'>
+
+  <view class='page_hd'>
+    <view class='yl-row'>
+      <view class='hd_l'>
+        <text>联系人</text>
+      </view>
+      <view class='hd_r'>
+        <text bindtap='allRead'>全部已读</text>
+      </view>
+    </view>
+  </view>
+  <view class='page_bd'>
+    <block wx:if='{{!isEmpty}}'>
+      <block wx:for='{{linkList}}' wx:for-item='item' wx:key='linkList'>
+        <navigator url='../../tabDetails/messageInfo/messageInfo?hrId={{item.recruiterId}}&linkId=message'>
+          <view class='yl-row bd_item'>
+            <view class='bd_l'>
+              <image src='{{item.userImg}}' mode='scaleToFill'></image>
+            </view>
+            <view class='bd_r yl-fgrow2'>
+              <view class='bd_r_t'>
+                <text>{{item.userName}}</text>
+                <text>{{item.companyAbbreviation}}</text>
+                <text>{{item.recruiterJob}}</text>
+                <text class='lastTime'>{{item.saveTime}}</text>
+              </view>
+              <view class='bd_r_b'>
+                <text class='newstMessage'>{{item.messageContent}}</text>
+              </view>
+              <block wx:if='{{item.isRead == "0"}}'>
+                <view class='unRead'></view>
+              </block>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </block>
+    <block wx:else>
+      <view class='isEmpty'>
+        <text>暂无数据</text>
+      </view>
+    </block>
+
+  </view>
+</view>

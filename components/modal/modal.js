@@ -87,7 +87,7 @@ Component({
           })
         } else if (this.properties.fadeStyle == "slideDown") {
           this.setData({
-            top: '87px', 
+            top: 0, 
             opacity: 1
           })
         } else if (this.properties.fadeStyle == "slideRight") {
@@ -129,11 +129,17 @@ Component({
         })
       }
       //等关闭动画完毕后再移除模态框和遮罩
-      setTimeout(function() {
-        this.setData({
-          showModalStatus: false
-        })
-      }.bind(this), 400)
+      // setTimeout(function() {
+      //   this.setData({
+      //     showModalStatus: false
+      //   })
+      // }.bind(this), 400)
+      this.setData({
+        showModalStatus: false
+      });
+      let myEventDetail = { isShowModal: this.data.showModalStatus };
+      let myEventOption = {};
+      this.triggerEvent('Meeage', myEventDetail, myEventOption);
     }
   }
 });

@@ -1,13 +1,15 @@
 // pages/register/firstPage/register.js
 const app = getApp();
 const url = app.globalData.baseUrl;
+const checkFun = require('../../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    phone:'',
+    sessionId: '',
+    phone: '',
     isSend: false, //验证码是否已经发送
     isPass: true, //是否通过了验证
     keyCodeBtn: '获取验证码', //显示在获取验证码按钮上的文字
@@ -25,35 +27,44 @@ Page({
     let _that = this,
       runTime = 60;
     //需要发起请求，当成功发送了验证码之后设置在60S之后才能再次获取
+    let sessionId = _that.data.sessionId;
     wx.request({
       url: url + 'register/sendMessage.json',
       data: {
         'userPhone': _that.data.phone
       },
-      success(res) {
-        wx.showToast({
-          title: '发送成功',
-          icon: 'success',
-          duration: 2000
-        });
-        let timer = setInterval(function() {
-          if (runTime > 1) {
-            runTime--;
-            _that.setData({
-              keyCodeBtn: runTime + 's',
-              isSend: true,
-            });
-          } else {
-            _that.setData({
-              keyCodeBtn: '获取验证码',
-              isSend: false,
-            });
-            clearInterval(timer)
-          }
-        }, 1000);
+      header: {
+        'Cookie': 'JSESSIONID=' + sessionId
       },
-      failL(res) {
-        console.log(res)
+      success(res) {
+        if (res.data.status == 20016) {
+          wx.showModal({
+            title: '提示信息',
+            content: '该手机号码已经绑定!',
+            showCancel: false
+          });
+        } else {
+          wx.showToast({
+            title: '发送成功',
+            icon: 'success',
+            duration: 2000
+          });
+          let timer = setInterval(function() {
+            if (runTime > 1) {
+              runTime--;
+              _that.setData({
+                keyCodeBtn: runTime + 's',
+                isSend: true,
+              });
+            } else {
+              _that.setData({
+                keyCodeBtn: '获取验证码',
+                isSend: false,
+              });
+              clearInterval(timer)
+            }
+          }, 1000);
+        }
       }
     });
   },
@@ -107,6 +118,8 @@ Page({
   registerForm: function(e) {
     let _that = this;
     let isPass = _that.validateFun(e.detail.value.phone, e.detail.value.code);
+    let sessionId = _that.data.sessionId;
+    //获得当前用户的标识，以对应后台的数据
     if (isPass) {
       //验证获得的手机验证码是否正确
       wx.request({
@@ -116,6 +129,9 @@ Page({
           'phoneCode': e.detail.value.code
         },
         method: 'POST',
+        header: {
+          'Cookie': 'JSESSIONID=' + sessionId
+        },
         success(res) {
           if (res.data.status == 20017) {
             wx.showModal({
@@ -129,31 +145,14 @@ Page({
               content: '验证码失效，请重新获取!',
               showCancel: false
             });
-          } else if (res.data.status == 20016) {
-            wx.showModal({
-              title: '提示信息',
-              content: '该手机号码已经绑定!',
-              showCancel: false
-            });
-          } else {
-            wx.showModal({
-              title: '提示信息',
-              content: '绑定成功!',
-              showCancel: false
-            });
-            wx.showModal({
-              title: '提示',
-              content: '是否要去填写个人信息',
+          } else if (res.data.status == 10000){
+            wx.showToast({
+              title: '绑定成功，请填写个人信息',
+              icon: 'success',
               success(res) {
-                if (res.confirm) {
-                  wx.navigateTo({
-                    url: "../secondPage/myInfo"
-                  });
-                } else if (res.cancel) {
-                  wx.switchTab({
-                    url: '../tabBarPage/tab_JobList/tab_JobList'
-                  });
-                }
+                wx.redirectTo({
+                  url: "../secondPage/myInfo?key=register"
+                });
               }
             });
           }
@@ -161,4 +160,12 @@ Page({
       });
     }
   },
+
+  onLoad: function(e) {
+    let sessionId = '';
+    let that = this;
+    that.setData({
+      sessionId: wx.getStorageSync('wechat_session').sessionId
+    });
+  }
 });

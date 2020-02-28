@@ -1,30 +1,14 @@
+const app = getApp();
+const url = app.globalData.baseUrl;
 function getAllLocationCN(callBack) {
-  let allDate = [{
-    'id': '1',
-    'name': '省级',
-    'city': [{
-      'id': '1-1',
-      'name': '市级',
-      'district': [{
-          'id': '1-1-1',
-          'name': '区级01',
-        },
-        {
-          'id': '1-1-1',
-          'name': '区级02',
-        },
-        {
-          'id': '1-1-1',
-          'name': '区级03',
-        },
-        {
-          'id': '1-1-1',
-          'name': '区级04',
-        },
-      ]
-    }]
-  }];
-  callBack(allDate);
+  let allDate = [];
+  wx.request({
+    url: url +'chinaProvince/getProvinceCityDistrictTreeList.json',
+    success: (res) =>{
+      allDate =res.data.data;
+      callBack(allDate);
+    }
+  })
 }
 
 function getCompanyJobList(callBack){

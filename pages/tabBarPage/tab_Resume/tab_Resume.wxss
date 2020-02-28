@@ -1,124 +1,132 @@
 /* pages/tabBarPage/tab_Resume/tab_Resume.wxss */
 
-/* common end */
+page {
+  background-color: #fff;
+}
+
+.bluePoint {
+  position: absolute;
+  top: 3px;
+  left: -15px;
+  color: #199ed8;
+  font-size: 10px;
+}
+
+.center-view {
+  width: 85%;
+  box-sizing: border-box;
+  padding: 10px 20px;
+}
 
 .page__hd .center-view {
-  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 0;
+  padding-left: 0;
 }
 
 .page__hd .yl-row .yl-fgrow1 {
-  margin: 10rpx;
+  margin: 0rpx 10rpx;
 }
 
-.page__hd .yl-row .yl-fgrow1:first-child {
-  border-right: 1px solid #ccc;
-}
-
-.page__hd .yl-row .yl-fgrow1 .iconfont {
-  color: #ccc;
-  font-size: 1.3rem;
-  margin-right: 10rpx;
-}
-
-.page__hd .yl-row .yl-fgrow1 .icon-wenjian {
-  font-size: 1.1rem;
-  padding-bottom: 10rpx;
-}
-
-/* top end */
-
-/* headPortrait 头像 */
+/* --------- */
 
 .page__bd .section {
-  margin-bottom: 20rpx;
+  color: #999;
+  font-size: 0.8rem;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.myInfo .yl-row {
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
+.section .body .md-gray {
+  margin-top: 5px;
 }
 
-.myInfo .yl-fgrow2 .lg-black {
-  margin-bottom: 20rpx;
+/* 基本信息 */
+
+.myInfo {
+  padding-top: 0px;
 }
 
-.myInfo .hP image {
-  width: 130rpx;
-  height: 130rpx;
-  border-radius: 75rpx;
-}
-
-.myJob {
-  margin-top: 10rpx;
-}
-
-.myJob .myJobTitle {
-  margin: 10rpx 0rpx;
-}
-
-.myJob .myJobTitle text {
-  font-weight: 700;
-}
-
-.myJob .iconfont {
-  font-size: 45rpx;
-  color: #ccc;
-  margin-right: 10rpx;
-}
-
-.myJob .myJobItem text {
-  margin-right: 30rpx;
-}
-
-.myJob .myJobItem view {
-  margin-top: 10rpx;
-  margin-bottom: 20rpx;
-}
-
-.myJobExpect .md-black {
-  font-weight: 600;
-}
-
-.myJobExpect .yl-row {
-  margin: 10rpx 0rpx;
-}
-
-.myJobExpect .expMoneny {
-  color: #199ed8;
-}
-
-.myJobExpect .jobExpect {
-  padding: 10rpx 0rpx;
-}
-
-.myJobExp .workTag {
-  margin-top: 10rpx;
-}
-
-.myJobExp .workDetails {
-  margin-bottom: 20rpx;
-}
-
-.myJobExp .tagItem {
-  margin-bottom: 25rpx;
-}
-
-.myJobExp .tagItem text {
+.myInfo .hp {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
   border: 1px solid #ccc;
-  padding: 5rpx;
-  font-size: 28rpx;
-  margin-right: 20rpx;
 }
 
-.myJobExp .yl-row {
-  padding-top: 20rpx;
-  margin-bottom: 10rpx;
+.myInfo .hp image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
-.myEduExp .sName {
-  margin: 20rpx 0;
+.myJobItem {
+  margin-top: 5px;
 }
 
-.myEduExp .md-gray {
-  margin-bottom: 20rpx;
+.myJobItem .tipList {
+  margin-bottom: 5px;
+}
+
+.myJobItem .tipList view {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.myJobItem .tipList view text {
+  position: absolute;
+  top: 7px;
+  left: 23px;
+}
+
+.myJobItem .tipList view:nth-child(3) text {
+  left: 17px;
+}
+
+.jobIntention {
+  box-sizing: border-box;
+  margin-top: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.jobIntention:last-child {
+  border-bottom: 0;
+}
+
+.jobExp {
+  box-sizing: border-box;
+  margin-top: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.jobExp:last-child {
+  border-bottom: 0px;
+}
+
+.jobExp .expItem {
+  margin: 5px 0px 0px 0px;
+}
+
+.jobExp .yl-row {
+  margin-left: 0px;
+}
+
+.jobExp .tagItem {
+  margin-top: 5px;
+}
+
+.jobExp .tagItem text {
+  border: 1px solid #ccc;
+  margin-right: 5px;
+  padding: 0px 5px;
+}
+
+.eduExpP {
+  border-bottom: 0px;
+}
+
+.eduExp {
+  box-sizing: border-box;
+  margin-top: 8px;
 }

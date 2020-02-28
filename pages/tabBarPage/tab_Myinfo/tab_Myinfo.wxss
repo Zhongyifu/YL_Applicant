@@ -1,16 +1,35 @@
 /* pages/tab_Myinfo.wxss */
 
+page view {
+  box-sizing: border-box;
+}
+
 .page__hd {
   background-color: #199ed8;
   color: white;
 }
 
-.inleft .navLink {
-  margin-top: 20rpx;
+.yl-col-6 .fontSix {
+  font-size: 30px;
+  padding-left: 30px;
 }
-.inleft navigator{
-  font-size: 30rpx;
+
+.navLink {
+  position: relative;
+  width: 85px;
+  margin-top: 10px;
 }
+
+.navLink icon {
+  position: absolute;
+  top: -3px;
+  right: 0px;
+}
+
+.inleft navigator {
+  font-size: 15px;
+}
+
 .inright {
   float: right;
   margin-right: 30rpx;
@@ -25,7 +44,7 @@
 }
 
 .page__hd .yl-row {
-  padding-left: 30rpx;
+  padding: 15px;
 }
 
 .page__hd navigator {
@@ -33,17 +52,20 @@
 }
 
 .page__hd .profile {
-  width: 180rpx;
-  height: 180rpx;
-  border-radius: 90rpx;
+  box-sizing: border-box;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
   margin: 0 auto;
+  padding: 0px;
   margin-bottom: 20rpx;
+  background-color: #fff;
 }
 
 .profile image {
-  width: 180rpx;
-  height: 180rpx;
-  border-radius: 90rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 /* hd end */
@@ -56,45 +78,49 @@
   padding: 25rpx 0rpx;
 }
 
-.statistics .fontSix {
-  color: black;
+.statistics text {
+  font-size: 15px;
+  color: #434343;
+  /* color: #787878; */
 }
 
-.statistics text {
-  font-size: 35rpx;
-  color: #999;
-}
-.middleArea{
+.middleArea {
   border-top: 8rpx solid #ccc;
   border-bottom: 8rpx solid #ccc;
 }
+
 .optionList {
   width: 90%;
   margin: 0 auto;
 }
 
 .optionList .optionItem {
-  padding: 5rpx 0rpx;
+  padding: 15rpx 0rpx;
   border-bottom: 1px solid #ccc;
 }
-.optionList .optionItem:last-child{
+
+.optionList .optionItem:last-child {
   border-bottom: 0rpx;
 }
 
 .optionList .optionItem .leftIcon {
   color: #199ed8;
-  font-size: 40rpx;
+  font-size: 35rpx;
   margin-right: 30rpx;
 }
 
 .optionList .optionItem text {
-  font-size: 30rpx;
+  font-size: 15px;
+  color: #999;
 }
-.reminder{
+
+.reminder {
+  box-sizing: border-box;
   background-color: #ccc;
   text-align: center;
-  padding: 30rpx;
+  padding: 10px 0px;
 }
-.reminder text{
+
+.reminder text {
   font-size: 30rpx;
 }

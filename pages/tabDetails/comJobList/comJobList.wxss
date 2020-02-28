@@ -112,5 +112,19 @@
   border: 1px solid red;
 }
 
+/* 弹窗 */
+.search-modal .yl-fgrow1 text {
+  font-size: 12px;
+}
+.search_item .itemContent .select-item {
+  padding: 0px 5px;
+}
+.search_item .itemTitel {
+  font-size: 16px;
+  font-weight: 600;
+}
 
-
+.search_item .itemContent {
+  overflow: scroll;
+  padding-top:10px;
+}

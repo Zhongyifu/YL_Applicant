@@ -1,0 +1,68 @@
+<view class='page_bg' wx:if='{{block}}' bindtap='hide_bg' />
+<!-- <view class='btn_bg' wx:if='{{block}}'>
+  <view wx:for="{{link_list}}" wx:key='index'>
+    <button class="sp_tit" id='{{index}}' bindtap='list_item'>查看详情 {{item}} </button>
+  </view>
+</view> -->
+
+<!-- 对方的部分信息 -->
+
+
+<!-- 聊天主界面 -->
+<scroll-view class="history" scroll-y="true" scroll-with-animation scroll-top="{{scrollTop}}">
+  <!-- 消息列表 -->
+  <block wx:key="allContentList" wx:for="{{allContentList}}" wx:for-item='item'>
+    <!-- 我发送出去的消息 -->
+    <block wx:if="{{item.isApplicant}}">
+      <view class='my_right'>
+
+        <view class='p_r yl-row'>
+          <view class='p_r_l yl-fgrow2'>
+            <view class='new_txt'>
+              <text class='new_txt_my'>{{item.applicant.text}}</text>
+            </view>
+            <view class='sanjiao my'></view>
+          </view>
+
+          <view class='p_r_r'>
+            <image class='new_img' src='../../../images/jia_hao.png'></image>
+          </view>
+        </view>
+
+      </view>
+    </block>
+
+    <!-- 我接收得到的消息 -->
+    <block wx:if='{{item.isRecruiter}}'>
+      <view class='you_left'>
+        <view class='p_r yl-row'>
+
+          <view class='p_r_l'>
+            <image class='new_img' src='../../../images/jobList_s.png'></image>
+          </view>
+
+          <view class='p_r_r yl-fgrow2'>
+            <view class='new_txt'>
+              <text class='new_txt_ai'>{{item.recruiter.text}}</text>
+            </view>
+            <view class='sanjiao you'></view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </block>
+</scroll-view>
+
+<!-- 用户输入界面 -->
+<view class="sendmessage">
+  <!-- <image class='voice_icon' bindtap='addImg' src='../../../images/jia_hao.png'></image> -->
+  <block wx:if='{{!addImg}}'>
+    <input type="text" bindinput="bindKeyInput" value='{{inputValue}}' focus='true' confirm-type="done" />
+    <button bindtap="submitTo" class='user_input_text'>发送</button>
+  </block>
+  <block wx:if='{{addImg}}'>
+    <view class='voice_ing' bindtap="upimg">发送图片</view>
+  </block>
+</view>

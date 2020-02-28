@@ -1,151 +1,39 @@
-.jobPicker picker-view {
-  background-color: white;
-  padding: 0;
-  width: 100%;
-  height: 380rpx;
-  bottom: 0;
-  position: fixed;
-}
-
-.jobPicker picker-view-column view {
-  vertical-align: middle;
-  font-size: 28rpx;
-  line-height: 28rpx;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ----------------------------------------- */
-
-.animation-element-wrapper {
-  display: flex;
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 2;
-}
-
-.animation-element {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  height: 470rpx;
-  bottom: 0;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.animation-button {
-  margin-top: 20rpx;
-  top: 20rpx;
-  width: 400rpx;
-  height: 100rpx;
-  line-height: 100rpx;
-  align-items: center;
-}
-
-.jobPicker text {
-  color: #999;
-  display: inline-flex;
-  position: fixed;
-  margin-top: 20rpx;
-  height: 50rpx;
-  text-align: center;
-  line-height: 50rpx;
-  font-size: 34rpx;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.left-bt {
-  left: 30rpx;
-}
-
-.jobPicker .right-bt {
-  right: 30rpx;
-  color: #1aad19;
-}
-
-.line {
-  display: block;
-  position: fixed;
-  height: 1rpx;
-  width: 100%;
-  margin-top: 89rpx;
-  background-color: #eee;
-}
-
-.page__bd {
-  margin-bottom: 130px;
-}
-
-/* 关于添加多个技能标签 */
-
-.addSkill {
-  border: 1px solid #999;
-  text-align: center;
-  color: #199ed8;
-  margin: 10px 0px;
-  padding: 5px 0;
-  font-size: 15px;
-}
-
-.skillItem {
-  border: 1px solid red;
-}
-
-/* 关于自定义弹窗 */
-
-.select-modal .mymodal .mymodal-content {
-  height: 200px;
-}
-
-.select-modal #modal_companyType .itemView {
-  height: 370px;
-}
-
-.select-modal .comfirmDate {
-  border-top: 1px solid #ccc;
-}
-
-.select-modal .comfirmDate view {
-  width: 50%;
-}
-
-/* 关于职位类型*/
-
-.select-modal #modal_jobType .select-item {
-  width: 90%;
-  border: 0px;
+.jobItem {
   border-bottom: 1px solid #ccc;
-  border-radius: 0px;
-}
-
-.itemName_FF {
-  color: #199ed8;
-}
-
-.itemName_SF {
-  color: #1aad19;
-}
-
-.itemName_TF {
-  float: left;
-  border: 1px solid #199ed8;
-  font-size: 14px;
-  padding: 2px 5px;
-  margin: 5px 3px;
-  border-radius: 10%;
-}
-
-#modal_jobType .comfirmDate {
-  height: 50px;
-  display: fixed;
-  position: absolute;
-  bottom: 0px;
   width: 90%;
-  background: white;
+  margin: 0 auto;
+  position: relative;
+}
+
+.jobItem text {
+  margin: 5px;
+}
+
+.jobItem view {
+  margin: 5px 0px;
+}
+
+.jobItem .iconInRight {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  font-size: 12px;
+}
+
+.addNew {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.addNew navigator {
+  width: 40%;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 2px;
+  border: 1px solid #ccc;
+}
+
+.weui-btn-area button {
+  color: white;
+  background-color: #179b16;
 }

@@ -1,0 +1,151 @@
+<!--pages/tab_Company/tab_Company.wxml-->
+<view class='page searchTop'>
+
+  <view class='page__hd'>
+    <form class='weui-cells-form'>
+      <view class='yl-row searchList'>
+        <view class='yl-fgrow2'>
+          <input type='text' class='weui-input' placeholder='搜索关键字' placeholder-class='phcolor' confirm-type='search' bindinput="searchValue" bindconfirm='searchCompany' />
+        </view>
+        <view class='btnList'>
+          <icon type='search' class='searchIcon' color='white' bindtap='searchCompany'></icon>
+        </view>
+      </view>
+
+      <view class='orderList yl-row'>
+        <view class='yl-fgrow1' bindtap='search_financing'>
+          <text>融资\t</text>
+          <block wx:if='{{!status_finance}}'>
+            <image class='orderIcon' src='{{upImg_FI}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_FI}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+        <view class='yl-fgrow1' bindtap='search_scale'>
+          <text>规模\t</text>
+          <block wx:if='{{!status_scale}}'>
+            <image class='orderIcon' src='{{upImg_SC}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_SC}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+        <view class='yl-fgrow1' bindtap='search_industry'>
+          <text>行业\t</text>
+          <block wx:if='{{!status_industry}}'>
+            <image class='orderIcon' src='{{upImg_IN}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_IN}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+      </view>
+    </form>
+  </view>
+
+  <!--list body -->
+  <view class='page__bd {{isModalShow==true?"stopScroll":""}}'>
+    <block wx:for='{{companyList}}' wx:key='company' wx:for-index="idx" wx:for-item="item">
+      <view class='listItem'>
+
+        <view class='itemFirst'>
+          <navigator url='../../tabDetails/tabComInfo/tabComInfo?cId={{item.companyId}}'>
+            <view class="itemFl">
+
+              <view class='cover'>
+                <image src='{{item.companyLogo}}' mode='scaleToFill'></image>
+              </view>
+
+              <view class='message'>
+                <view class='blink'>
+                  <text>{{item.companyAbbreviation}}</text>
+                </view>
+                <view class='comInfo itemInfo'>
+                  <text>{{item.isListed==1?"已上市":"未上市"}}</text>
+                  <text>{{item.companySizeTypeName}}</text>
+                  <text>{{item.companyTradeTypeName}}</text>
+                </view>
+                <view>{{item.companyAddress}}</view>
+
+              </view>
+
+            </view>
+          </navigator>
+
+          <view class='unfollow' data-did='{{item.companyId}}' data-index='{{idx}}' data-status='{{item.isFocused}}' bindtap='followCompany'>
+            <block wx:if='{{item.isFocused == 0}}'>
+              <image src='../../../images/follow.png'></image>
+            </block>
+            <block wx:else>
+              <image src='../../../images/unfollow.png'></image>
+            </block>
+          </view>
+
+        </view>
+
+
+        <view class='line'></view>
+
+        <view class='text-sm gary-d position' style="padding:5px 0px;">
+          <text>热招：</text>
+          <text class='jobLink'>{{item.jobName}}</text>
+          <text>\t等\t{{item.jobCount}}\t个职位</text>
+          <icon class='iconfont icon-r_j inright'></icon>
+        </view>
+
+      </view>
+    </block>
+
+    <view class='bottomLine'>
+      <block wx:if='{{!isEmpty}}'>
+        <text class='md-black'>--------\t最底部啦\t--------</text>
+      </block>
+      <block wx:else>
+        <text class='md-black'>--------\t暂无数据\t--------</text>
+      </block>
+    </view>
+
+  </view>
+
+</view>
+
+
+<!-- 各个功能的弹窗 -->
+<view class='search-modal position'>
+
+  <!-- 融资 -->
+  <search-modal id="modal_Financing" fadeStyle="slideDown" height="95px;" bindMeeage='close_Financing'>
+    <view slot="modalContent">
+      <view data-id='1' class="search-item {{fck==1?'checked':''}}" bindtap='submit_Financing'>已上市</view>
+      <view data-id='0' class="search-item {{fck==0?'checked':''}}" bindtap='submit_Financing'>未上市</view>
+    </view>
+  </search-modal>
+
+  <!-- 规模 -->
+  <search-modal id="modal_Scale" fadeStyle="slideDown" height="95px;" bindMeeage='close_Scale'>
+    <view slot="modalContent">
+      <view class='search_item'>
+        <view class='itemContent'>
+          <blcok wx:for='{{scale}}' wx:for-item='item' wx:key='scale'>
+            <text class='select-item {{sck==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='submit_Scale'>{{item.typeName}}</text>
+          </blcok>
+        </view>
+      </view>
+    </view>
+  </search-modal>
+
+  <!-- 行业 -->
+  <search-modal id="modal_Industry" fadeStyle="slideDown" height="350px;" bindMeeage='close_Industry'>
+    <view slot="modalContent">
+      <view class='search_item'>
+        <view class='itemContent' style='height:245px'>
+          <block wx:for='{{industry}}' wx:for-item='item' wx:key='industryList'>
+            <text class='select-item {{lck==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='submit_Industry'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+    </view>
+  </search-modal>
+
+</view>

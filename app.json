@@ -1,24 +1,32 @@
 {
   "pages": [
-    "pages/register/thirdPage/jobExp",
+    "pages/tabDetails/messageInfo/messageInfo",
     "pages/tabBarPage/tab_JobList/tab_JobList",
-    "pages/tabBarPage/tab_Myinfo/tab_Myinfo",
-    "pages/tabBarPage/tab_Company/tab_Company",
     "pages/tabBarPage/tab_Message/tab_Message",
+    "pages/tabBarPage/tab_Company/tab_Company",
     "pages/tabBarPage/tab_Resume/tab_Resume",
+    "pages/tabBarPage/tab_Myinfo/tab_Myinfo",
+    "pages/register/sixth_add/addWorkTag",
     "pages/register/firstPage/register",
     "pages/register/secondPage/myInfo",
+    "pages/register/thirdPage/jobExp",
+    "pages/register/third_add/addJobExp",
     "pages/register/fourthPage/eduExp",
+    "pages/register/fourth_add/addEduExp",
     "pages/register/fifthPage/myAdv",
     "pages/register/sixthPage/workTag",
     "pages/login/longin",
+    "pages/tabDetails/comJobList/comJobList",
     "pages/tabDetails/tabJobInfo/tabJobInfo",
     "pages/tabDetails/tabComInfo/tabComInfo",
-    "pages/tabDetails/comJobList/comJobList"
+    "pages/tabDetails/tabMyInfo_ComList/tabMyInfo_ComList",
+    "pages/tabDetails/tabMyInfo_JobList/tabMyInfo_JobList",
+    "pages/tabDetails/tabMyInfo_Privacy/tabMyInfo_Privacy",
+    "pages/tabDetails/tabMyInfo_Interview/tabMyInfo_Interview",
+    "pages/tabDetails/tabMyInfo_Interested/tabMyInfo_Interested"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#199ED8",
+    "navigationBarBackgroundColor": "#199ed8",
     "navigationBarTitleText": "叶联招聘",
     "navigationBarTextStyle": "white"
   },
@@ -54,7 +62,9 @@
         "iconPath": "images/myInfo.png",
         "selectedIconPath": "images/myInfo_s.png"
       }
-    ]
+    ],
+    "color": "#000000",
+    "selectedColor": "#199ed8"
   },
   "usingComponents": {},
   "sitemapLocation": "sitemap.json"

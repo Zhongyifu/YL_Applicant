@@ -1,5 +1,5 @@
-<!--pages/tab_JobList.wxml-->
-<view class='page'>
+<!--pages/tab_JobList.wxml  根据公司id查询得到的 改公司下的职位-->
+<view class='page searchTop'>
 
   <!-- list title -->
   <view class='page__hd'>
@@ -16,35 +16,46 @@
       </view>
 
       <view class='orderList yl-row'>
+
         <view class='yl-fgrow1' bindtap='orderByRecent'>
-          <text>{{recentVal}}\t</text>
-          <image class='orderIcon' src='{{icon_Recent}}' mode='scaleToFill'></image>
+          <text>{{re_value}}\t</text>
+          <block wx:if='{{!status_TJ}}'>
+            <image class='orderIcon' src='{{upImg_TJ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_TJ}}' mode='scaleToFill'></image>
+          </block>
         </view>
+
         <view class='yl-fgrow1' bindtap='orderByAddress'>
-          <text>{{addressVal}}\t</text>
-          <image class='orderIcon' src='{{icon_Address}}' mode='scaleToFill'></image>
+          <text>{{address_value}}\t</text>
+          <block wx:if='{{!status_DZ}}'>
+            <image class='orderIcon' src='{{upImg_DZ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_DZ}}' mode='scaleToFill'></image>
+          </block>
         </view>
-        <view class='yl-fgrow1' bindtap='orderByEXP'>
-          <text> 经验\t</text>
-          <image class='orderIcon' src='{{icon_Exp}}' mode='scaleToFill'></image>
+
+        <view class='yl-fgrow1' bindtap='orderByReq'>
+          <text> 要求\t</text>
+          <block wx:if='{{!status_YQ}}'>
+            <image class='orderIcon' src='{{upImg_YQ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_YQ}}' mode='scaleToFill'></image>
+          </block>
         </view>
-        <view class='yl-fgrow1' bindtap='orderBySalary'>
-          <text>薪资\t</text>
-          <image class='orderIcon' src='{{icon_Salary}}' mode='scaleToFill'></image>
-        </view>
-        <view class='yl-fgrow1' bindtap='orderByJobType'>
-          <text>职位类型\t</text>
-          <image class='orderIcon' src='{{icon_JobType}}' mode='scaleToFill'></image>
-        </view>
+
       </view>
 
     </form>
   </view>
 
   <!--list body -->
-  <view class='page__bd'>
+  <view class='page__bd {{isModalShow==true?"stopScroll":""}}'>
 
-    <block wx:for='{{jobListItem}}' wx:key='jobListKey' wx:for-item='item'>
+    <block wx:for='{{jobList}}' wx:key='jobListKey' wx:for-item='item'>
       <navigator url='../../tabDetails/tabJobInfo/tabJobInfo?jobId={{item.jobId}}' hover-class="navigator-hover">
         <view class='listItem'>
 
@@ -53,26 +64,26 @@
               <text class='fl1 fontSix '>{{item.jobName}}</text>
             </view>
             <view>
-              <text class='fl2'>{{item.jobPayMin}}~{{item.jobPayMax}}</text>
+              <text class='fl2'>{{item.salaryRangeTypeName}}</text>
             </view>
           </view>
 
           <view class='md-black'>
-            <text class='fl1'>{{item.companyName}}</text>
+            <text class='fl1'>{{item.companyAbbreviation}}</text>
           </view>
 
           <view class='bg-gray'>
-            <text class='fl1'>{{item.companyAddress}}</text>
-            <text>{{item.workExperience}}</text>
-            <text>{{item.degree}}</text>
+            <text class='fl1'>{{item.districtName}}</text>
+            <text>{{item.workingLifeTypeName}}</text>
+            <text>{{item.educationalBackgroundTypeName}}</text>
           </view>
 
           <view class='md-black hrHp'>
             <image src='../../../images/hP.jpg'></image>
             <view>
-              <text class='fl1'>{{item.publisherName}}</text>
+              <text class='fl1'>{{item.recruiterName}}</text>
               <text>\t·\t</text>
-              <text>{{item.publisherPost}}</text>
+              <text>{{item.recruiterJob}}</text>
             </view>
           </view>
 
@@ -89,89 +100,84 @@
   <!-- 关于各个搜索栏目的弹窗选择层-->
   <!-- 针对多个搜索，需要绑定多个事件，去打开不同的模态框 -->
   <view class='search-modal position'>
-    <search-modal id="modal_Recent" fadeStyle="slideDown" height="75px">
+
+    <!-- 推荐 -->
+    <search-modal id="modal_Recent" fadeStyle="slideDown" height="100px" bind:Meeage='close_Recent'>
       <!-- 推荐 -->
       <view slot="modalContent">
-        <view data-resId='1' class="search-item {{recentChecked==1?'checked':''}}" bindtap='clickRecent'>最新</view>
-        <view data-resId='2' class="search-item {{recentChecked==2?'checked':''}}" bindtap='clickRecent'>推荐</view>
+        <view data-id='1' class="search-item {{rck==1?'checked':''}}" bindtap='search_Recent'>最新</view>
+        <view data-id='0' class="search-item {{rck==0?'checked':''}}" bindtap='search_Recent'>推荐</view>
       </view>
     </search-modal>
 
-    <search-modal id="modal_Address" fadeStyle="slideDown" height="460px">
+    <!-- 地点 -->
+    <search-modal id="modal_Address" fadeStyle="slideDown" height="460px" bind:Meeage='close_Address'>
       <!-- 地址 -->
-      <view slot="modalContent" bindtap='clickAddress'>
+      <view slot="modalContent">
         <view class='yl-row allLocation'>
           <view class='yl-fgrow1 province'>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
-            <text data-pId='01'>北京</text>
+            <block wx:for='{{proList}}' wx:for-item='item' wx:key='province'>
+              <text class='{{pck==item.provinceId?"selected":""}}' data-id='{{item.provinceId}}' bindtap='checkCity'>{{item.provinceName}}</text>
+            </block>
           </view>
           <view class='yl-fgrow1 city'>
-            <text data-cId='01'>北京市</text>
-            <text data-cId='01'>北京市</text>
-            <text data-cId='01'>北京市</text>
-            <text data-cId='01'>北京市</text>
-            <text data-cId='01'>北京市</text>
-            <text data-cId='01'>北京市</text>
+            <block wx:for='{{cityList}}' wx:for-item='item' wx:key='city'>
+              <text class='{{cck==item.cityId?"selected":""}}' data-id='{{item.cityId}}' bindtap='checkDistrct'>{{item.cityName}}</text>
+            </block>
           </view>
           <view class='yl-fgrow1 district'>
-            <text data-dId='01'>密云区</text>
-            <text data-dId='01'>密云区</text>
-            <text data-dId='01'>密云区</text>
+            <block wx:for='{{disList}}' wx:for-item='item' wx:key='district'>
+              <text class='{{dck==item.districtId?"selected":""}}' data-id='{{item.districtId}}' data-text='{{item.districtName}}' bindtap='checkedDis'>{{item.districtName}}</text>
+            </block>
           </view>
         </view>
         <view class='formBtn'>
-          <button>确定</button>
+          <button bindtap='search_Address'>确定</button>
         </view>
       </view>
     </search-modal>
 
-    <search-modal id="modal_Experience" fadeStyle="slideDown" height="200px">
-      <!-- 经验 -->
+    <!-- 要求 -->
+    <search-modal id="modal_Require" fadeStyle="slideDown" height="460px" bind:Meeage='close_Require'>
       <view slot="modalContent">
-        <block wx:for='{{expList}}' wx:for-index='expIdx' wx:for-item='expItem' wx:key='exp'>
-          <view data-expId='{{expIdx}}' class="search-item {{expChecked==expIdx?'checked':''}}" bindtap='clickEXP'>{{expItem}}</view>
-        </block>
+
+        <!-- 工作经验 -->
+        <view class='search_item'>
+          <view class='itemTitel'>工作经验</view>
+          <view class='itemContent' style='height:75px'>
+            <block wx:for='{{experienceList}}' wx:for-item='item' wx:key='exp'>
+              <text class='select-item {{expId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='checkExp'>{{item.typeName}}</text>
+            </block>
+          </view>
+        </view>
+
+        <!-- 薪资标准 -->
+        <view class='search_item'>
+          <view class='itemTitel'>薪资标准</view>
+          <view class='itemContent' style='height:75px'>
+            <block wx:for='{{salaryList}}' wx:for-item='item' wx:key='salary'>
+              <text class='select-item {{saId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='checkSalary'>{{item.typeName}}</text>
+            </block>
+          </view>
+        </view>
+
+        <!-- 职位类型 -->
+        <view class='search_item'>
+          <view class='itemTitel'>职位类型</view>
+          <view class='itemContent' style='height:128px'>
+            <block wx:for='{{jobThreeList}}' wx:for-item='item' wx:key='jobThree'>
+              <text class='select-item {{jobId==item.jobThreeId?"selected":""}}' data-id='{{item.jobThreeId}}' bindtap='checkJob'>{{item.jobThreeName}}</text>
+            </block>
+          </view>
+        </view>
+
+        <view class='formBtn'>
+          <button bindtap='submit_Require'>确定</button>
+        </view>
+
+
       </view>
     </search-modal>
 
-    <search-modal id="modal_Salary" fadeStyle="slideDown" height="200px">
-      <!-- 薪资 -->
-      <view slot="modalContent">
-        <view data-salaryId='1' class="search-item {{salaryChecked==1?'checked':''}}" bindtap='clickSalary'>3K以下</view>
-        <view data-salaryId='2' class="search-item {{salaryChecked==2?'checked':''}}" bindtap='clickSalary'>3-5K</view>
-        <view data-salaryId='3' class="search-item {{salaryChecked==3?'checked':''}}" bindtap='clickSalary'>5-10K</view>
-        <view data-salaryId='4' class="search-item {{salaryChecked==4?'checked':''}}" bindtap='clickSalary'>10-20K</view>
-        <view data-salaryId='5' class="search-item {{salaryChecked==5?'checked':''}}" bindtap='clickSalary'>20-50K</view>
-        <view data-salaryId='6' class="search-item {{salaryChecked==6?'checked':''}}" bindtap='clickSalary'>50K以上</view>
-      </view>
-    </search-modal>
-
-    <search-modal id="modal_JobType" fadeStyle="slideDown" height="200px">
-      <!-- 职位类型 -->
-      <view slot="modalContent">
-        <view data-typeId='1' class="search-item {{jobTypeChecked==1?'checked':''}}" bindtap='clickJobType'>类型 1</view>
-        <view data-typeId='2' class="search-item {{jobTypeChecked==2?'checked':''}}" bindtap='clickJobType'>类型 2</view>
-        <view data-typeId='3' class="search-item {{jobTypeChecked==3?'checked':''}}" bindtap='clickJobType'>类型 3</view>
-        <view data-typeId='4' class="search-item {{jobTypeChecked==4?'checked':''}}" bindtap='clickJobType'>类型 4</view>
-        <view data-typeId='5' class="search-item {{jobTypeChecked==5?'checked':''}}" bindtap='clickJobType'>类型 5</view>
-        <view data-typeId='6' class="search-item {{jobTypeChecked==6?'checked':''}}" bindtap='clickJobType'>类型 6</view>
-      </view>
-    </search-modal>
   </view>
-
 </view>

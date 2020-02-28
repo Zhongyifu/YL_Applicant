@@ -1,7 +1,7 @@
 /* pages/register/secondPage/myInfo.wxss */
 
 .uploadHP {
-  height: 30 0rpx;
+  padding: 5px;
   text-align: center;
 }
 

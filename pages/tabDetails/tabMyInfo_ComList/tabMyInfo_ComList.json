@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "search-modal": "/components/search/search"
+  },
+  "navigationBarTitleText": "我关注的公司"
+}

@@ -1,0 +1,76 @@
+<!--pages/tabDetails/tabMyInfo_Privacy/tabMyInfo_Privacy.wxml-->
+<view class='page'>
+
+  <view class='page_hd'>
+    <text>已屏蔽的公司：{{total}}\t家</text>
+  </view>
+
+
+  <view class='page_bd'>
+
+    <view class='search-list'>
+      <block wx:for='{{companyList}}' wx:for-item='item' wx:key='companyList'>
+        <view class='yl-row search-item'>
+          <view class='ltext yl-fgrow2'>
+            <text>{{item.companyName}}</text>
+          </view>
+          <view class='rimg' data-sid='{{item.shieldedId}}' bindtap='deleteDate'>
+            <image src='../../../images/delete.png'></image>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <cover-view class='getMore'>
+    <button type="warn" class='weui-btn weui-btn_primary' bindtap='addNew'>屏蔽公司</button>
+  </cover-view>
+
+</view>
+
+
+
+<view class='search-modal position'>
+  <search-modal id="modal_AddNew" fadeStyle="slideDown" height="400px;">
+    <view slot="modalContent">
+      <view class='yl-row'>
+        <view class='search-input'>
+          <input type='text' class='weui-input' bindinput='inputFun'></input>
+        </view>
+        <view class='search-btn'>
+          <button class='weui-btn' bindtap='searchCompany'>
+            <icon type='search' color='#199DE8'></icon>
+          </button>
+        </view>
+      </view>
+
+      <view class='search-list'>
+        <block wx:for='{{resultList}}' wx:for-item='item' wx:for-index='idx' wx:key='resultList'>
+          <view class='yl-row search-item'>
+            <view class='ltext yl-fgrow2'>
+              <text>{{item.companyName}}</text>
+            </view>
+            <view class='rimg' data-index='{{idx}}' data-did='{{item.companyId}}' bindtap='modalUpdate'>
+              <!-- <image src='../../../images/delete.png'></image> -->
+              <checkbox-group>
+                <label class="weui-cell weui-check__label">
+                  <checkbox checked='{{item.isHide}}' />
+                </label>
+              </checkbox-group>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <view class='formBtn'>
+        <view class='qx' bindtap='cancelModal'>
+          <text>取消</text>
+        </view>
+        <view class='qr' bindtap='sumbitModal'>
+          <text>确认</text>
+        </view>
+      </view>
+    </view>
+  </search-modal>
+</view>

@@ -1,13 +1,18 @@
 /* pages/tab_Company/tab_Company.wxss */
 
+.mymodal {
+  top: 122px;
+  border-radius: 0rpx;
+}
+
 .btnList icon {
   margin-right: 1rem;
 }
 
 .orderList {
-  height: 2rem;
-  line-height: 2rem;
+  height: 3rem;
   text-align: center;
+  line-height: 1.5rem;
   border-bottom: 1px solid #ccc;
 }
 
@@ -21,46 +26,92 @@
 }
 
 /* top end */
+
 .inright {
   position: absolute;
-  top: -20rpx;
+  top: -0rpx;
   right: 0;
 }
+
 .blink {
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
-.page__bd .listItem {
-  border-bottom: 5px solid #f2f2f2;
-  font-size: 1rem;
-  padding: 1rem 1rem 0.3rem 1rem;
+.itemFirst {
+  position: relative;
+  margin-bottom: 10px;
 }
 
 .itemFirst .cover {
   text-align: center;
-  margin-right: 0.5rem;
-  height: 200rpx;
-  width: 80rpx;
+  height: 80px;
+  width: 20%;
 }
-.cover image{
+
+.itemFirst .itemFl {
+  display: flex;
+}
+
+.cover image {
   width: 100%;
   height: 100%;
+  border-radius: 5px;
+}
+
+.listItem .message view:last-child {
+  font-size: 12px;
+  color: #000;
+}
+
+.listItem .blink {
+  color: #000;
+  font-size: 16px;
 }
 
 .listItem .comInfo {
+  font-size: 12px;
+  color: #999;
   margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .listItem .comInfo text {
-  margin: 0rem 0.7rem;
+  margin: 0rem;
+  margin-right: 10px;
 }
-.listItem .jobLink{
+
+.listItem .jobLink {
   color: #199ed8;
+  margin: 0px 5px; 
 }
-.listItem .rightText{
+
+.listItem .rightText {
   text-align: right;
   margin: 0;
   margin-right: 1rem;
   font-size: 1.1rem;
+}
+
+.message {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.unfollow {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  background-color: #fff;
+}
+
+.unfollow image {
+  width: 25px;
+  height: 25px;
+}
+
+/* 弹窗 */
+
+.search_item .itemContent .select-item {
+  padding: 3px 5px;
 }

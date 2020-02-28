@@ -1,0 +1,12 @@
+<!--components/modal/modal.wxml-->
+
+
+<!--遮罩层-->
+<view class='mask' wx:if="{{showModalStatus}}" bindtap='closeModal' style="opacity:{{opacity}}"></view>
+<!--弹出模态框-->
+<view class='mymodal' wx:if="{{showModalStatus}}" style='height:{{height}}'>
+  <!-- 模态框内容 style='height:calc({{height}} - 80px)'-->
+  <view class='mymodal-content'>
+    <slot name="modalContent"></slot>
+  </view>
+</view>

@@ -1,0 +1,248 @@
+<!--pages/register/sixthPage/workTag.wxml-->
+<view class="page">
+
+  <view class='topArea'>
+    <text>工作经验</text>
+  </view>
+
+  <view class='inputArea page__bd'>
+    <form bindsubmit='workTagForm'>
+      <view class='weui-cells weui-cells_form'>
+
+        <!-- 公司名称 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>公司名称：</text>
+          </view>
+
+          <view class='weui-cell__bd'>
+            <input class='weui-input' name='companyName' confirm-type='next' placeholder='请填写' value='{{re_CompanyName}}'></input>
+          </view>
+        </view>
+
+        <!-- 公司行业 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>公司行业：</text>
+          </view>
+          <view class='weui-cell__bd' bindtap='companyType' style='padding:10px 0px'>
+            <block wx:if='{{isIndChang}}'>
+              <text>{{tradeTypeName}}</text>
+            </block>
+            <block wx:else>
+              <block wx:if='{{isEmpty}}'>
+                <text>{{re_TradeTypeName}}</text>
+              </block>
+              <block wx:else>
+                <text class='gray'>请选择</text>
+              </block>
+
+            </block>
+          </view>
+        </view>
+
+        <!-- 职位类型 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>职位类型：</text>
+          </view>
+
+          <view class='weui-cell__bd' bindtap="jobType" style='padding:15rpx 0;'>
+            <block wx:if='{{isJobChang}}'>
+              <text>{{jobThreeName}}</text>
+            </block>
+            <block wx:else>
+              <block wx:if='{{isEmpty}}'>
+                <text>{{re_JobThreeName}}</text>
+              </block>
+              <block wx:else>
+                <text class='gray'>请选择</text>
+              </block>
+            </block>
+          </view>
+        </view>
+
+        <!-- 入职时间 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>入职时间：</text>
+          </view>
+
+          <view class='weui-cell__bd'>
+            <picker mode='date' bindchange='startChange' start='1950-01-01' end='{{endDay}}' fields='month' value='{{startDate}}' name='startTime'>
+              <block wx:if='{{isStartChange}}'>
+                <text class='black'>{{startDate}}</text>
+              </block>
+              <block wx:else>
+
+                <block wx:if='{{isEmpty}}'>
+                  <text>{{re_StartTime}}</text>
+                </block>
+                <block wx:else>
+                  <text class='gray'>请选择</text>
+                </block>
+              </block>
+            </picker>
+          </view>
+        </view>
+
+        <!-- 离职时间 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>离职时间：</text>
+          </view>
+
+          <view class='weui-cell__bd'>
+            <picker mode='date' bindchange='endChange' start='1950-01-01' end='{{endDay}}' fields='month' value='{{endDate}}' name='endTime'>
+              <block wx:if='{{isEndChange}}'>
+                <text class='black'>{{endDate}}</text>
+              </block>
+              <block wx:else>
+
+                <block wx:if='{{isEmpty}}'>
+                  <text>{{re_EndTime}}</text>
+                </block>
+                <block wx:else>
+                  <text class='gray'>请选择</text>
+                </block>
+
+              </block>
+            </picker>
+          </view>
+        </view>
+
+        <!-- 技能标签 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd'>
+            <text class='weui-label'>技能标签：</text>
+          </view>
+
+          <view class='weui-cell__bd' bindtap='skillTag' style='padding:10px 0px;'>
+            <block wx:if='{{skvList != ""}}'>
+              <block wx:for='{{skvList}}' wx:for-item='itemName' wx:key='skv'>
+                <text class='skillItem'>{{itemName.name}}</text>
+              </block>
+            </block>
+            <block wx:else>
+              <text class='gray'>请选择</text>
+            </block>
+          </view>
+        </view>
+
+        <!-- 工作内容 -->
+        <view class='weui-cell'>
+          <view class='weui-cell__hd' style='position:relative; width:90px;height: 150px;'>
+            <text class='weui-label' style=" position: absolute; top:0px; left: 0;width:95px;">工作内容：</text>
+          </view>
+
+          <view class='weui-cell__bd'>
+            <block wx:if='{{!isShowModel}}'>
+              <block wx:if='{{isEmpty}}'>
+                <textarea class='weui-textarea' name='workContent' value='{{re_workContent}}'></textarea>
+              </block>
+              <block wx:else>
+                <textarea class='weui-textarea' name='workContent'></textarea>
+              </block>
+            </block>
+            <block wx:else>
+              <text></text>
+            </block>
+          </view>
+        </view>
+
+      </view>
+      <view class='weui-btn-area'>
+        <button type='primary' form-type='submit'>保存</button>
+      </view>
+    </form>
+
+  </view>
+</view>
+
+<!-- 自定义层的弹窗 -->
+<view class="select-modal ">
+
+  <!-- 公司行业 -->
+  <select-modal id='modal_companyType' fadeStyle='slideUp' height='430px' bindMeeage='close_companyType'>
+    <view slot="modalName" class='modalName'>公司行业</view>
+    <view slot="modalContent">
+      <view class='itemView'>
+        <block wx:for='{{companyList}}' wx:for-index="idx" wx:for-item="itemName" wx:key='companyList'>
+          <text bindtap='selectedItem' class='select-item {{ctid==itemName.typeId?"selected":""}}' data-id='{{itemName.typeId}}' data-text='{{itemName.typeName}}'>{{itemName.typeName}}</text>
+        </block>
+      </view>
+      <view class='comfirmDate yl-row'>
+        <view class='cancel' bindtap='cancel_ct'>取消</view>
+        <view class='comfirm' bindtap='comfirmDate_ct'>确认</view>
+      </view>
+    </view>
+  </select-modal>
+
+  <!-- 就职类型 -->
+  <select-modal id='modal_jobType' fadeStyle='slideUp' height='430px' bindMeeage='close_jobType'>
+    <view slot="modalName" class='modalName'>职位类型</view>
+    <view slot="modalContent">
+      <view class='itemView'>
+
+        <!-- 第一层 -->
+        <block wx:for='{{jobFFs}}' wx:for-index="idx_FF" wx:for-item="itemName_FF" wx:key='jobTyp_FF'>
+          <view class='select-item'>
+            <view bindtap='showSF' data-index='{{idx_FF}}' data-ffm='{{itemName_FF.ffm}}'>
+              <text class='itemName_FF'> Ⅰ.\t{{itemName_FF.name}}</text>
+            </view>
+
+            <!-- 第二层 -->
+            <block wx:if='{{showSF}}'>
+              <block wx:for='{{jobSFs}}' wx:for-index='idx_SF' wx:for-item='itemName_SF' wx:key='jobTyp_SF'>
+                <block wx:if='{{itemName_SF.ffm==itemName_FF.ffm}}'>
+                  <view class='select-item'>
+                    <view bindtap='showTF' data-index='{{idx_SF}}'>
+                      <text class='itemName_SF'> Ⅱ.\t{{itemName_SF.name}}</text>
+                    </view>
+
+                    <!-- 第三层 -->
+                    <block wx:if='{{showTF}}'>
+                      <block wx:for='{{jobTFs}}' wx:for-index='idx_TF' wx:for-item='itemName_TF' wx:key='jobTyp_TF'>
+                        <block wx:if='{{itemName_TF.sfm==itemName_SF.sfm}}'>
+                          <text class='itemName_TF {{jobCheck==itemName_TF.id?"selected":""}}' bindtap='selectJobItem' data-tfid='{{itemName_TF.id}}' data-text='{{itemName_TF.name}}'>{{itemName_TF.name}}</text>
+                        </block>
+                      </block>
+                    </block>
+
+
+                  </view>
+                </block>
+              </block>
+            </block>
+
+          </view>
+        </block>
+
+      </view>
+      <view class='comfirmDate yl-row'>
+        <view class='cancel' bindtap='cancel_job'>取消</view>
+        <view class='comfirm' bindtap='comfirmDate_job'>确认</view>
+      </view>
+    </view>
+  </select-modal>
+
+  <!-- 技能标签 -->
+  <select-modal id='modal_skill' fadeStyle='slideUp' height='430px' bindMeeage='close_Skill'>
+    <view slot="modalName" class='modalName'>技能标签</view>
+    <view slot="modalContent">
+
+      <view class='itemView'>
+        <block wx:for='{{skillList}}' wx:for-item='itemName' wx:for-index='idx' wx:key='skill'>
+          <text class='select-item {{itemName.isSelected?"selected":""}}' bindtap='selectSkill' data-id='{{idx}}' data-lid='{{itemName.labelId}}' data-text='{{itemName.labelName}}'>{{itemName.labelName}}</text>
+        </block>
+      </view>
+
+      <view class='comfirmDate yl-row'>
+        <view class='cancel' bindtap='cancel_sk'>取消</view>
+        <view class='comfirm' bindtap='comfirmDate_sk'>确认</view>
+      </view>
+
+    </view>
+  </select-modal>
+
+</view>

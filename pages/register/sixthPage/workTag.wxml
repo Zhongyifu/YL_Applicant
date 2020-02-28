@@ -1,148 +1,62 @@
-<!--pages/register/sixthPage/workTag.wxml-->
 <view class='page'>
+
   <view class='topArea'>
     <text>求职意向</text>
   </view>
 
   <view class='inputArea page__bd'>
-    <form bindsubmit='workTagForm'>
-      <view class='weui-cells weui-cells_form'>
 
+    <!-- <block wx:if='{{id_Code == "register"}}'> -->
+
+      <view style='width:90%; margin:0 auto;margin-bottom:40px'>
+        <!-- 求职状态  -->
         <view class='weui-cell'>
           <view class='weui-cell__hd'>
             <text class='weui-label'>求职状态：</text>
           </view>
 
           <view class='weui-cell__bd'>
-            <picker bindchange='statusChange' range='{{statusList}}' range-key='typeName' value='{{statusItem}}' data-sid='{{statusList[statusItem].typeId}}'>
-              <block wx:if='{{isStatusChange}}'>
-                <text>{{statusList[statusItem].typeName}}</text>
+            <picker bindchange='statusChange' range='{{myStateList}}' range-key='typeName' value='{{msIndex}}'>
+              <block wx:if='{{!isStatusChange}}'>
+                <text class='gray'>请选择</text>
               </block>
               <block wx:else>
-                <text class='gray'>请选择</text>
+                <text>{{myStateList[myStateIndex].typeName}}</text>
               </block>
             </picker>
           </view>
-        </view>
-
-        <!-- 期望行业 -->
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>期望行业：</text>
-          </view>
-
-          <!-- <view class='weui-cell__bd'>  在分级的情况下
-            <picker mode='multiSelector' name='ind' bindchange='bIndChange' bindcolumnchange='bIndCChange' value='{{indIndex}}' range='{{indList}}'>
-              <block wx:if='{{isIndChang}}'>
-                <text>{{indList[0][indIndex[0]]}}\t ~ \t {{indList[1][indIndex[1]]}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>请选择</text>
-              </block>
-            </picker>
-          </view> -->
-
-          <!-- 在不分级的情况下 -->
-          <view class='weui-cell__bd'>
-            <picker bindchange='bIndChange' range='{{indList}}' range-key='typeName' value='{{indIndex}}' data-id='{{indList[indIndex].typeId}}'>
-              <block wx:if='{{isIndChang}}'>
-                <text>{{indList[indIndex].typeName}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>请选择</text>
-              </block>
-            </picker>
-          </view>
-
-        </view>
-
-        <!-- 期望职位 -->
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>期望职位：</text>
-          </view>
-
-          <view class='weui-cell__bd' bindtap="selectJob" style='padding:15rpx 0;'>
-            <block wx:if='{{isJobChang}}'>
-              <text>{{jobFF}}-{{jobSF}}-{{jobTF}}</text>
-            </block>
-            <block wx:else>
-              <text class='gray'>请选择</text>
-            </block>
-          </view>
-        </view>
-
-        <!-- 工作城市 -->
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>工作城市：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <picker mode='region' bindchange='placeChange' value='{{placeItem}}' custom-item='{{placeList}}'>
-              <block wx:if='{{isPlaceChange}}'>
-                <text>{{placeItem[0]}}\t-\t{{placeItem[1]}}\t-\t{{placeItem[2]}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>请选择</text>
-              </block>
-            </picker>
-          </view>
-        </view>
-
-        <!-- 薪资要求 -->
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>薪资要求：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <picker bindchange='salaryChange' range='{{salaryList}}' range-key='typeName' value='{{salaryItem}}' data-sid='{{salaryList[salaryItem].typeId}}'>
-              <block wx:if='{{isSalaryChang}}'>
-                <text>{{salaryList[salaryItem].typeName}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>请选择</text>
-              </block>
-            </picker>
-          </view>
-        </view>
-
-      </view>
-
-
-      <view class='weui-btn-area'>
-        <button type='primary' form-type='submit'>完成注册</button>
-        <button type='default' bindtap='skipTap'>跳过,直接完成注册</button>
-      </view>
-
-      <!-- 期望职业选择器 -->
-      <view class='jobPicker'>
-        <view class='animation-element-wrapper' animation="{{animation}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hBCancle">
-
-          <view class="animation-element">
-            <text class="left-bt" bindtap="hBCancle">取消</text>
-            <text class="right-bt" bindtap="hBCancle">确定</text>
-          </view>
-
-          <picker-view indicator-style="height: 50rpx;" bindchange='bJChage' value='{{value}}'>
-            <picker-view-column>
-              <view class='pList_Item' wx:for='{{jobFFs}}' wx:for-item="firstF" wx:key='jobFirst'>{{firstF.name}}</view>
-            </picker-view-column>
-
-            <picker-view-column>
-              <view class='pList_Item' wx:for='{{jobSFs}}' wx:key='jobSecound'>{{item.name}}</view>
-            </picker-view-column>
-
-            <picker-view-column>
-              <view class='pList_Item' wx:for='{{jobTFs}}' wx:key='jobThired'>{{item.name}}</view>
-            </picker-view-column>
-          </picker-view>
-
         </view>
       </view>
 
+    <!-- </block> -->
 
-    </form>
+    <!-- 求职意向简表 -->
+    <block wx:for='{{workList}}' wx:for-item='item' wx:key='workList'>
+      <navigator class='jobItem' url='../sixth_add/addWorkTag?wId={{item.jobIntentionId}}&key={{id_Code}}'>
+        <view class="text-lg fontSix">
+          <text>{{item.jobThreeName}}</text>
+          <text>{{item.salaryRangeTypeName}}</text>
+        </view>
+        <view class='text-sm gray'>
+          <text>{{item.cityName}}</text>
+          <text>{{item.tradeTypeName}}</text>
+          <!-- <text>{{item.myStateName}}</text> -->
+        </view>
+        <view class='iconInRight'>
+          <icon class='iconfont icon-r_j'></icon>
+        </view>
+      </navigator>
+    </block>
+
+    <!-- 求职意向 -->
+    <view class='addNew'>
+      <navigator url='../sixth_add/addWorkTag?key={{id_Code}}'>添加求职意向</navigator>
+      <!-- <text bindtap='goToAdd'>添加求职意向</text> -->
+    </view>
+
+    <view class='weui-btn-area'>
+      <button type='default' bindtap='sendDate'>{{btnText}}</button>
+    </view>
   </view>
+
 </view>

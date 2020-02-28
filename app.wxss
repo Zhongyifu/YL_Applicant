@@ -1,6 +1,14 @@
 @import "weui.wxss";
 
-/**app.wxss**/
+/* common */
+
+page {
+  background-color: #f6f8f8;
+}
+
+.weui-cells {
+  background-color: #f6f8f8;
+}
 
 .show {
   display: block;
@@ -10,10 +18,53 @@
   display: none;
 }
 
+switch {
+  zoom: 0.6;
+}
+
+/* pg_hd 相关 */
+
+.page__hd {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.page__hd input {
+  width: 85%;
+  padding-left: 20px;
+  margin: 15px 0 15px 20px;
+  border-radius: 5px;
+  color: black;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.position {
+  position: relative;
+}
+
+/* 关于标签 */
+
+.skillItem {
+  display: block;
+  float: left;
+  border: 1px solid #199ed8;
+  font-size: 14px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+.itemInfo text {
+  background-color: #ebecef;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
 /* 关于弹出框的部分样式 */
 
 .search-modal .search-item {
-  padding: 0 15px;
+  padding: 5px 15px;
 }
 
 .search-modal .checked {
@@ -21,7 +72,7 @@
 }
 
 .search-modal .checked::after {
-  content: '√';
+  content: '✓';
   color: #199ed8;
   margin-left: 10px;
 }
@@ -31,16 +82,16 @@
   text-align: center;
   overflow: scroll;
   height: 100%;
-  max-height: 408px;
+  max-height: 395px;
 }
 
 .search-modal .yl-fgrow1 text {
   display: block;
-  width: 80%;
+  width: 70%;
   margin-bottom: 10px;
   margin-left: 10px;
   border: 1px solid #ccc;
-  background-color: #eff3f6;
+  padding: 5px 0px;
 }
 
 .search-modal .yl-fgrow1:last-child {
@@ -59,37 +110,56 @@
   width: 100%;
 }
 
-/* ---------------------------- */
-
-.position {
-  position: relative;
-}
-
 /* 搜索框：placeholder */
 
 .weui-btn-area button {
-  margin-bottom: 15rpx;
+  margin-bottom: 65rpx;
 }
 
 .phcolor {
-  color: white;
+  text-align: center;
+  color: #ccc;
 }
 
 /* 顶部搜索部分 */
 
-.page__hd {
-  margin: 0rem;
-  padding: 0rem;
+.searchTop {
+  position: relative;
 }
 
-.page__hd input {
+.searchTop .page__hd {
+  position: fixed;
+  top: 0;
   width: 100%;
-  padding-left: 0.5rem;
-  color: white;
+  z-index: 2;
+  background: white;
+}
+
+.searchTop .page__bd {
+  /* margin-top: 140px; */
+  margin-top: 121px;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  background-color: #f2f3f5;
+}
+
+.searchTop .page__bd .listItem {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  padding: 1rem 1rem 0.3rem 1rem;
+  background-color: white;
+}
+
+.searchTop .btnList .searchIcon {
+  background: #199ed8;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
 .searchList {
-  background-color: #199ed8;
+  background-color: #fff;
 }
 
 /* 自编的栅格系统 */
@@ -99,27 +169,13 @@
   flex-wrap: nowrap;
   align-items: center;
   width: 100%;
-  height: 50%;
+  /* height: 50%; */
 }
-
-.yl-col-8 {
+.yl-col-6{
   width: 75%;
 }
-
-.yl-col-9 {
-  width: 70%;
-}
-
-.yl-col-6 {
-  width: 50%;
-}
-
-.yl-col-4 {
+.yl-col-4{
   width: 25%;
-}
-
-.yl-col-3 {
-  width: 30%;
 }
 
 .yl-fgrow2 {
@@ -130,59 +186,44 @@
   flex-grow: 1;
 }
 
-/* 部分背景颜色 */
-
-.bg-gray text {
-  background-color: #eff3f6;
-  font-size: 0.6rem;
-  color: #919191;
-  margin-right: 20rpx;
-  padding: 5rpx 10rpx;
-  border-radius: 10rpx;
-}
-
 /* 关于字体的定义 */
 
 .fontSix {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .gray {
   color: #999;
 }
 
+.gray-d {
+  color: #333;
+}
+
 .black {
   color: #000;
 }
 
-.sm-gray {
-  font-size: 0.7rem;
-  color: #999;
+.blue {
+  color: #199ed8;
 }
 
-.md-gray {
-  font-size: 0.8rem;
-  color: #999;
+.text-sm {
+  font-size: 12px;
 }
 
-.lg-gray {
-  font-size: 1rem;
-  color: #999;
+.text-md {
+  font-size: 14px;
 }
 
-.lg-black {
-  font-size: 30rpx;
-  color: black;
+.text-lg {
+  font-size: 16px;
 }
 
-.md-black {
-  font-size: 28rpx;
-  color: black;
-}
-
-.sm-black {
-  font-size: 25rpx;
-  color: black;
+.section_Title {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 /* 仿写<hr/> */
@@ -219,6 +260,9 @@
   width: 100%;
   text-align: center;
   line-height: 100rpx;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .inputArea .weui-cells {
@@ -276,7 +320,9 @@
   width: 90%;
   left: 20px;
   bottom: 0;
-  top: 80px;
+  top: 120px;
+  z-index: 999;
+  border-radius: 0rpx;
 }
 
 .select-modal .modalName {
@@ -284,13 +330,12 @@
   text-align: center;
 }
 
-.select-modal .select-item {
+.select-item {
   display: block;
   float: left;
   border: 1px solid #199ed8;
   font-size: 14px;
-  padding: 2px 5px;
-  border-radius: 10%;
+  padding: 7px 5px;
   margin-left: 10px;
   margin-bottom: 10px;
 }
@@ -302,6 +347,17 @@
 
 .select-modal .comfirmDate {
   text-align: center;
+  height: 50px;
+  display: fixed;
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+  background: white;
+  border-top: 1px solid #ccc;
+}
+
+.select-modal .comfirmDate view {
+  width: 50%;
 }
 
 .select-modal .cancel {
@@ -318,6 +374,12 @@
 .selected {
   background-color: #199ed8;
   color: white;
+}
+
+/* 防止页面在有弹出层时滚动 */
+
+.stopScroll {
+  position: fixed;
 }
 
 /* 关于图标的定义 */

@@ -1,1 +1,39 @@
-/* pages/register/fourthPage/eduExp.wxss */
+/* pages/register/fourthPage/eduExp.wxss */.jobItem {
+  border-bottom: 1px solid #ccc;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.jobItem text {
+  margin: 5px;
+}
+
+.jobItem view {
+  margin: 5px 0px;
+}
+
+.jobItem .iconInRight {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  font-size: 12px;
+}
+
+.addNew {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.addNew navigator {
+  width: 40%;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 2px;
+  border: 1px solid #ccc;
+}
+
+.weui-btn-area button {
+  color: white;
+  background-color: #179b16;
+}

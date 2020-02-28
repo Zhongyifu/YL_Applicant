@@ -2,7 +2,7 @@
 <view class='page'>
 
   <view class='topArea'>
-    <text>手机号注册</text>
+    <text>绑定手机号码</text>
   </view>
 
   <view class='inputArea page__bd'>
@@ -25,7 +25,7 @@
           </view>
 
           <view class='weui-cell__bd'>
-            <input class='weui-input' type='number' name='code' bindinput='keyCodeInput' placeholder='验证码' maxlength='4'></input>
+            <input class='weui-input' type='number' name='code' placeholder='验证码' maxlength='4'></input>
           </view>
 
           <view class='weui-cell__ft'>
@@ -36,7 +36,7 @@
       </view>
       <!-- weui-cells END -->
       <view class='weui-btn-area'>
-        <button type='primary' form-type='submit'>注册</button>
+        <button type='primary' form-type='submit'>绑定</button>
       </view>
 
     </form>

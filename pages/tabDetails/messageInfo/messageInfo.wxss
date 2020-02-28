@@ -1,0 +1,222 @@
+page {
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.jia_img {
+  height: 80rpx;
+  width: 90rpx;
+}
+
+.time {
+  text-align: center;
+  padding: 5rpx 20rpx 5rpx 20rpx;
+  width: 200rpx;
+  font-size: 26rpx;
+  background-color: #e8e8e8;
+}
+
+.tab {
+  bottom: 120rpx;
+}
+
+.tab_1 {
+  position: fixed;
+  bottom: 50rpx;
+  width: 200rpx;
+  font-size: 26rpx;
+  left: 50%;
+  margin-left: -45rpx;
+  height: 100rpx;
+}
+
+.tab_2 {
+  right: 30rpx;
+  position: fixed;
+}
+
+/* 聊天 */
+
+.my_right {
+  /* float: right;
+  margin-top: 30rpx;
+  position: relative;
+  right: 40rpx; */
+  width: 95%;
+}
+
+.p_r {
+  min-height: 50px;
+  align-items: initial;
+  margin-bottom: 5px;
+}
+
+.p_r_l {
+  padding-right: 10px;
+  position: relative;
+}
+
+.p_r_r {
+  position: relative;
+}
+
+.my_audio {
+  height: 120rpx;
+  width: 150rpx;
+  position: absolute;
+  right: 150rpx;
+  background: white;
+  top: 20rpx;
+}
+
+.my_img_bg {
+  height: 150rpx;
+  width: 400rpx;
+  position: relative;
+  right: 0;
+  background: white;
+  top: 20rpx;
+}
+
+.you_left {
+  width: 95%;
+  margin-top: 5px;
+}
+
+.new_img {
+  width: 85rpx;
+  height: 85rpx;
+  border: 1px solid #d0d0d0;
+}
+
+.new_txt {
+  /* width: 420rpx; */
+}
+
+.new_txt_my {
+  border-radius: 3px;
+  background-color: #fff;
+  margin-top: 10rpx;
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  float: right;
+}
+
+.new_txt_ai {
+  border-radius: 3px;
+  background-color: #fff;
+  margin-top: 0rpx;
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  float: left;
+}
+
+.sanjiao {
+  top: 20rpx;
+  position: relative;
+  width: 0px;
+  height: 0px;
+  border-width: 15rpx;
+  border-style: solid;
+}
+
+.my {
+  border-color: transparent transparent transparent #fff;
+  position: absolute;
+  right: -4px;
+}
+
+.you {
+  border-color: transparent #fff transparent transparent;
+  position: absolute;
+  left: -14px;
+}
+
+.sendmessage {
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  flex-direction: row;
+  height: 85rpx;
+  background-color: #ecebeb;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.voice_icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+}
+
+.voice_ing {
+  width: 90%;
+  height: 65rpx;
+  line-height: 65rpx;
+  text-align: center;
+  border-radius: 15rpx;
+  border: 1px solid #c7c6c6;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.sendmessage_2 {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+  background-color: #f4f4f6;
+  flex-direction: row;
+  height: 85rpx;
+}
+
+.sendmessage input {
+  width: 75%;
+  height: 60rpx;
+  background-color: white;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  /* margin-left: 20rpx; */
+  margin-left: 25rpx;
+  margin-right: 5px;
+  border: 1px solid #d0d0d0;
+  padding-left: 20rpx;
+}
+
+.sendmessage button {
+  width: 16%;
+  height: 63rpx;
+  background: #0c0;
+  color: white;
+  line-height: 63rpx;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  margin-right: 20px;
+}
+
+.hei {
+  height: 20rpx;
+}
+
+.history {
+  /* height: 80%; */
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  font-size: 14px;
+  line-height: 50rpx;
+  word-break: break-all;
+}
+
+.icno_kf {
+  position: fixed;
+  bottom: 160rpx;
+  margin: 0 auto;
+  text-align: center;
+  left: 50%;
+  margin-left: -40rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}

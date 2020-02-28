@@ -1,95 +1,115 @@
 <!--pages/tabDetails/tabJobInfo.wxml-->
 <view class='page'>
+
   <view class='page__hd'>
+
     <view class='jobName'>
-      <text class='fontSix'>JAVA 高级开发工程师</text>
-      <text class='sm-gray'>11K - 15K</text>
+      <text class='fontSix'>{{dataList.jobName}}</text>
+      <text>{{dataList.salaryRangeTypeName}}</text>
     </view>
-    <view class='jobASK sm-black'>
-      <text>广州*天河</text>
-      <text>应届生</text>
-      <text>本科</text>
+
+    <view class='jobASK text-sm gray'>
+      <text>{{dataList.districtName}}</text>
+      <text>{{dataList.workingLifeTypeName}}</text>
+      <text>{{dataList.educationalBackgroundTypeName}}</text>
     </view>
+
     <view class='jobHR position'>
-      <view class='img'>
-        <image></image>
-      </view>
-      <view class='hrName md-black'>
-        <view>
-          <text class='fontSix'>HR 姓名</text>
-        </view>
-        <view>
-          <text>公司名称\t职位名称</text>
-        </view>
-      </view>
-      <view class='getMore'>
-        <icon class='iconfont icon-r_j'></icon>
-      </view>
-    </view>
-  </view>
-
-  <view class='page__bd'>
-    <!-- 任职要求 -->
-    <view class='jobInfo jobInfo_int'>
-      <view class='md-black fontSix'>任职要求</view>
-      <!-- <view wx:for='{{jobIntroduce}} 'wx:key='intKey ' wx:for-index='intIndex ' wx:for-item='intItem '>
-        <text>{{intIndex}}</text>
-        <text>.</text>
-        <text>{{intItem.data}}</text>
-      </view> -->
-      <view>
-        <text class='sm-gray'>1.差额发未发文威sfwefwfewe风威风违法威风威风违法违法违法违法违法违法</text>
-      </view>
-      <view>
-        <text class='sm-gray'>1.差额发未发文威sfwefwfewe风威风违法威风威风违法违法违法违法违法违法</text>
-      </view>
-    </view>
-    <!-- 技能要求 -->
-    <view class='jobInfo jobInfo_skill'>
-      <view class='md-black fontSix'>技能要求</view>
-      <view>
-        <text>标签一</text>
-        <text>标签二</text>
-        <text>标签三</text>
-      </view>
-    </view>
-    <!-- 公司福利 -->
-    <view class='jobInfo jobInfo_welfare'>
-      <view class='md-black fontSix'>公司福利</view>
-      <view>
-        <text>福利一</text>
-        <text>福利二</text>
-        <text>福利三</text>
-      </view>
-    </view>
-
-    <!-- 公司介绍 -->
-    <view class=' jobInfo jobInfo_comInt'>
-      <view class='md-black fontSix'>公司介绍</view>
-      <view class='position'>
+      <navigator url='../messageInfo/messageInfo?hrId={{dataList.recruiterId}}'>
         <view class='img'>
-          <image></image>
+          <image src='{{dataList.recruiterImg}}'></image>
         </view>
-        <view class='comName md-black'>
+        <view class='hrName'>
           <view>
-            <text class='fontSix'>公司名称</text>
+            <text class='fontSix text-lg'>{{dataList.recruitername}}</text>
           </view>
           <view>
-            <text>融资轮</text>
-            <text>10-20人</text>
-            <text>行业</text>
+            <text class="text-sm gray">{{dataList.companyAbbreviation}}\t{{dataList.recruiterJob}}</text>
           </view>
         </view>
         <view class='getMore'>
           <icon class='iconfont icon-r_j'></icon>
         </view>
+      </navigator>
+    </view>
+
+  </view>
+
+  <view class='page__bd'>
+    <!-- 任职要求 -->
+    <view class='jobInfo jobInfo_int'>
+      <view>任职要求</view>
+      <view>
+        <text class='text-md gray'>{{dataList.jobRequirement}}</text>
       </view>
+    </view>
+
+    <!-- 技能要求 -->
+    <view class='jobInfo jobInfo_skill'>
+      <view>技能要求</view>
+      <block wx:if='{{dataList.jobLabelList != ""}}'>
+        <block wx:for='{{dataList.jobLabelList}}' wx:for-item='itd' wx:key='labelName'>
+          <text class='select-items'>{{itd.labelName}}</text>
+        </block>
+      </block>
+      <block wx:else>
+        <text class='select-items'>无数据</text>
+      </block>
+    </view>
+
+    <!-- 工作内容 -->
+    <view class='jobInfo jobInfo_int'>
+      <view>工作内容</view>
+      <view>
+        <text class='text-md gray'>{{dataList.jobContent}}</text>
+      </view>
+    </view>
+
+    <!-- 公司福利 -->
+    <view class='jobInfo jobInfo_welfare'>
+      <view>公司福利</view>
+      <block wx:if='{{dataList.companyWelfareList != ""}}'>
+        <block wx:for='{{dataList.companyWelfareList}}' wx:for-item='itd' wx:key='welfare'>
+          <text class='select-items'>{{itd.labelName}}</text>
+        </block>
+      </block>
+      <block wx:else>
+        <text class='select-items'>无数据</text>
+      </block>
+
+    </view>
+
+    <!-- 公司介绍 -->
+    <view class=' jobInfo jobInfo_comInt'>
+      <view>公司介绍</view>
+
+      <view class='position'>
+        <navigator url='../tabComInfo/tabComInfo?cid={{dataList.companyId}}'>
+          <view class='img'>
+            <image src='{{dataList.companyPhotoUrl}}'></image>
+          </view>
+          <view class='comName md-black'>
+            <view>
+              <text class='fontSix text-lg'>{{dataList.companyFullName}}</text>
+            </view>
+            <view class="text-sm gray">
+              <text>{{dataList.isListedCompanies==1?"已上市":"未上市"}}\t</text>
+              <text>{{dataList.companySizeTypeName}}\t</text>
+              <text>{{dataList.companyTradeTypeName}}</text>
+            </view>
+          </view>
+          <view class='getMore'>
+            <icon class='iconfont icon-r_j'></icon>
+          </view>
+        </navigator>
+      </view>
+
     </view>
 
     <!-- 公司具体位置 Map-->
     <view class='jobInfo jobInfo_address'>
-      <view class='md-black fontSix'>公司具体位置</view>
-      <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}"></map>
+      <view>公司具体位置</view>
+      <map id="map" longitude="{{dataList.longitude}}" latitude="{{dataList.latitude}}" markers="{{markers}}"></map>
     </view>
   </view>
 
@@ -97,6 +117,10 @@
 
   <!-- 立即沟通按钮 -->
   <view class='talkBtn'>
-    <button class='weui-btn weui-btn_plain-default'>立即沟通</button>
+    <view class='weui-btn weui-btn_plain-default followJob' data-status='{{dataList.isInterested}}' bindtap='followJob'>
+      <image src='{{iconSrc}}'></image>
+      <text>收藏</text>
+    </view>
+    <button class='weui-btn weui-btn_plain-default message' bindtap='goToMessage'>立即沟通</button>
   </view>
 </view>

@@ -10,13 +10,12 @@
       <view class='weui-cells weui-cells_form'>
 
         <view class='weui-cell'>
-          <textarea placeholder="一段话突出自己核心优势，提高自己的竞争力！" placeholder-style='color:#999' name='myAdv' />
+          <textarea placeholder="一段话突出自己核心优势，提高自己的竞争力！" placeholder-style='color:#999' name='myAdv' value='{{myAdv}}'/>
         </view>
 
       </view>
       <view class='weui-btn-area'>
-        <button type='primary' form-type='submit'>提交</button>
-        <button type='default' bindtap='skipTap'>跳过</button>
+        <button type='primary' form-type='submit'>{{btnText}}</button>
       </view>
     </form>
   </view>

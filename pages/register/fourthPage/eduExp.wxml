@@ -1,90 +1,39 @@
-<!--pages/register/fourthPage/eduExp.wxml-->
-
 <view class='page'>
+
   <view class='topArea'>
     <text>教育经验</text>
   </view>
+
   <view class='inputArea page__bd'>
-    <form bindsubmit='registerForm'>
-      <view class='weui-cells weui-cells_form'>
 
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>学校名称：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <input class='weui-input' name='schoolName' confirm-type='next' placeholder='学校名称 '></input>
-          </view>
+    <!-- 教育经验简表 -->
+    <block wx:for='{{eduExpList}}' wx:for-item='item' wx:key='jobList'>
+      <navigator class='jobItem' url='../fourth_add/addEduExp?eduId={{item.educationExperienceId}}&key={{id_Code}}'>
+        <view class="text-lg fontSix">
+          <text>{{item.majorName}}</text>
+          <text>{{item.educationalBackgroundTypeName}}</text>
         </view>
-
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>学历水平：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <picker bindchange="bEduChange" range="{{eduList}}" range-key='typeName' value="{{eduIndex}}" data-eid='{{eduList[eduIndex].typeId}}'>
-              <block wx:if='{{!isEduSelected}}'>
-                <text class='gray'>请填写学历水平</text>
-              </block>
-              <block wx:else>
-                <text class='black'>{{eduList[eduIndex].typeName}}</text>
-              </block>
-            </picker>
-          </view>
+        <view class='text-sm gray'>
+          <text>{{item.schoolName}}</text>
+          <text>{{item.startTime}} 至 {{item.endTime}}</text>
         </view>
-
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>专业名称：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <input class='weui-input' name='majorName' confirm-type='next' placeholder='专业名称 '></input>
-          </view>
+        <view class='iconInRight'>
+          <icon class='iconfont icon-r_j'></icon>
         </view>
+      </navigator>
+    </block>
 
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>入学时间：</text>
-          </view>
+    <!-- 教育工作经验 -->
+    <view class='addNew'>
+      <navigator url='../fourth_add/addEduExp?key={{id_Code}}'>添加教育经验</navigator>
+    </view>
 
-          <view class='weui-cell__bd'>
-            <picker mode='date' bindchange='startDateChange' start='2015-01-01' end='{{nowTime}}' value='{{startTime}}' fields='month' name='sTime'>
-              <block wx:if='{{isStartChange}}'>
-                <text class='black'>{{startTime}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>入学时间</text>
-              </block>
-            </picker>
-          </view>
-        </view>
 
-        <view class='weui-cell'>
-          <view class='weui-cell__hd'>
-            <text class='weui-label'>毕业时间：</text>
-          </view>
-
-          <view class='weui-cell__bd'>
-            <picker mode='date' bindchange='endDateChange' start='2015-01-01' end='{{nowTime}}' value='{{endTime}}' fields='month' name='eTime'>
-              <block wx:if='{{isEndDChange}}'>
-                <text class='black'>{{endTime}}</text>
-              </block>
-              <block wx:else>
-                <text class='gray'>毕业时间</text>
-              </block>
-            </picker>
-          </view>
-        </view>
-
-      </view>
-
-      <view class='weui-btn-area'>
-        <button type='primary' form-type='submit'>下一步</button>
-        <button type='default' bindtap='skipTap'>跳过</button>
-      </view>
-    </form>
+    <view class='weui-btn-area'>
+      <block wx:if='{{!isEmpty}}'>
+        <button type='default' bindtap='nextTap'>{{btnText}}</button>
+      </block>
+    </view>
   </view>
+
 </view>

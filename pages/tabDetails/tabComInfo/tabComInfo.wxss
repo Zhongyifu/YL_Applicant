@@ -1,14 +1,47 @@
-/* pages/tabDetails/tabComInfo/tabComInfo.wxss */
-
-.comHp {
-  box-sizing: border-box;
-  text-align: center;
-  padding-top: 10rpx;
+.page {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.comHp image {
-  width: 150rpx;
-  height: 150rpx;
+.page_hd {
+  margin-top: 25px;
+}
+
+.page_hd .yl-row {
+  margin-bottom: 10px;
+}
+
+.page_hd .yl-row .companyName {
+  font-size: 23px;
+}
+
+.page_hd .yl-row .comInfo {
+  width: 80%;
+  height: 80px;
+}
+
+.page_hd .yl-row .comInfo view {
+  margin-bottom: 10px;
+}
+
+.page_hd .yl-row .comInfo view text {
+  margin-right: 10px;
+}
+
+.page_hd .yl-row .comHp {
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+}
+
+.page_hd .yl-row .comHp image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.page_hd .fuli {
+  margin: 10px 0;
 }
 
 .page_hd .yl-col-8 {
@@ -16,39 +49,27 @@
   padding-left: 20rpx;
 }
 
-.page_hd .fuli {
-  width: 100%;
-  margin-bottom: 30rpx;
-  padding: 10rpx;
-}
-
-.page_hd .fuli text {
-  /* box-sizing: border-box; *//* display: block; *//* width: 150rpx; */
-  margin-right: 35rpx;
-  line-height: 50rpx;
-  border-bottom: 1px solid blue;
-}
-
 .page_bd {
   margin-top: 10rpx;
 }
 
 .page_bd .comInfp {
-  padding: 20rpx;
-  border: 1px solid red;
-  margin-bottom: 10rpx;
+  padding: 20rpx 0px;
+  margin-bottom: 5rpx;
+  border-bottom: 1px solid #ccc;
 }
 
 .page_bd .comInfp:last-child {
   margin-bottom: 150rpx;
+  border-bottom: 0;
 }
 
 .page_bd .comPhoto {
-  border: 1px solid red;
   width: 100%;
   height: 200rpx;
   overflow: hidden;
   white-space: nowrap;
+  margin-top: 5px;
 }
 
 .page_bd .comPhoto image {
@@ -61,9 +82,11 @@
 .page_bd .comAddress map {
   width: 100%;
   height: 400rpx;
+  margin-top: 5px;
 }
 
 .page_bd .comInfp .weui-cell__ft {
+  text-align: left;
   max-width: 400rpx;
 }
 
@@ -100,5 +123,18 @@
 .showMore {
   color: #196a99;
   font-size: 28rpx;
-  margin-top: 30rpx;
+}
+
+/*  */
+
+.fuli-items {
+  border: 1px solid #199ed8;
+  border-radius: 10%;
+  font-size: 0.7rem;
+  padding: 10rpx 20rpx;
+  margin: 10px 10rpx;
+}
+
+.comInfoAIC .weui-cell {
+  align-items: flex-start;
 }

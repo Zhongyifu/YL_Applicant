@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "search-modal": "/components/search/search"
+  },
+  "navigationBarTitleText": "公司列表"
 }

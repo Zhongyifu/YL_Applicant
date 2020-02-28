@@ -10,11 +10,12 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.0",
-	"appid": "wx93d3b47fc4bbaca9",
+	"libVersion": "2.7.7",
+	"appid": "wx6018758dcb872e4a",
 	"projectname": "YL",
 	"debugOptions": {
 		"hidedInDevtools": []

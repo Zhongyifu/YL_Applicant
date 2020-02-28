@@ -1,0 +1,221 @@
+<!--pages/tab_JobList.wxml-->
+<view class='page searchTop'>
+  <!-- list title -->
+  <view class='page__hd'>
+    <form class='weui-cells-form'>
+
+      <view class='yl-row searchList'>
+        <view class='yl-fgrow2'>
+          <input type='text' class='weui-input' placeholder='请输入想要搜索的内容' placeholder-class='phcolor' confirm-type='search' bindinput="searchValue" />
+        </view>
+        <view class='btnList'>
+          <icon class='iconfont icon-jiahao' bindtap='jobIntention'></icon>
+          <icon type='search' class='searchIcon' color='white' bindtap='searchJob'></icon>
+        </view>
+      </view>
+
+      <view class='orderList yl-row'>
+
+        <!-- item_TJ -->
+        <view class='yl-fgrow1' bindtap='orderByTJ'>
+          <text>推荐\t</text>
+          <block wx:if='{{!status_TJ}}'>
+            <image class='orderIcon' src='{{upImg_TJ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_TJ}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+
+        <!-- item_DZ -->
+        <view class='yl-fgrow1' bindtap='orderByDZ'>
+          <text>{{orderByDZtext}}\t</text>
+          <block wx:if='{{!status_DZ}}'>
+            <image class='orderIcon' src='{{upImg_DZ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_DZ}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+
+        <!-- item_GS -->
+        <view class='yl-fgrow1' bindtap='orderByGS'>
+          <text>公司\t</text>
+          <block wx:if='{{!status_GS}}'>
+            <image class='orderIcon' src='{{upImg_GS}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_GS}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+
+        <!-- item_YQ -->
+        <view class='yl-fgrow1' bindtap='orderByYQ'>
+          <text>要求\t</text>
+          <block wx:if='{{!status_YQ}}'>
+            <image class='orderIcon' src='{{upImg_YQ}}' mode='scaleToFill'></image>
+          </block>
+          <block wx:else>
+            <image class='orderIcon' src='{{downImg_YQ}}' mode='scaleToFill'></image>
+          </block>
+        </view>
+
+      </view>
+    </form>
+  </view>
+
+  <!--list body -->
+  <view class='page__bd {{isModalShow==true?"stopScroll":""}}'>
+
+    <block wx:for='{{jobList}}' wx:key='jobList' wx:for-item='item'>
+      <navigator url='../../tabDetails/tabJobInfo/tabJobInfo?jobId={{item.jobId}}' hover-class="navigator-hover">
+        <view class='listItem'>
+
+          <view>
+            <text class='fl1 fontSix'>{{item.jobName}}</text>
+            <text class='fl2'>{{item.salaryRangeTypeName}}</text>
+          </view>
+
+          <view class='md-black' style='margin-bottom:0;'>
+            <text class='fl1'>{{item.companyFullName}} \t</text>
+            <block wx:if='{{item.isListedCompanies==1}}'>
+              <text class='fl1'>\t上市公司</text>
+            </block>
+          </view>
+
+          <view class='bg-gray'>
+            <text class='fl1'>{{item.districtName}}</text>
+            <text>{{item.workingLifeTypeName}}</text>
+            <text>{{item.educationalBackgroundTypeName}}</text>
+          </view>
+
+          <view class='md-black hrHp'>
+            <image src='{{item.recruiterImg}}'></image>
+            <view>
+              <text class='fl1'>{{item.recruiterName}}</text>
+              <text>\t·\t</text>
+              <text>{{item.recruiterJob}}</text>
+            </view>
+          </view>
+
+
+        </view>
+      </navigator>
+    </block>
+
+    <view class='bottomLine'>
+      <block wx:if='{{!isEmpty}}'>
+        <text class='md-black'>--------\t最底部啦\t--------</text>
+      </block>
+      <block wx:else>
+        <text class='md-black'>--------\t暂无数据\t--------</text>
+      </block>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 各个功能的弹窗 -->
+<view class='search-modal position'>
+
+  <!-- 推荐 -->
+  <search-modal id="modal_Recent" fadeStyle="slideDown" height="95px;" bindMeeage='close_Recent'>
+    <view slot="modalContent">
+      <view data-id='1' class="search-item {{rck==1?'checked':''}}" bindtap='submit_Recent'>最新</view>
+      <view data-id='0' class="search-item {{rck==0?'checked':''}}" bindtap='submit_Recent'>推荐</view>
+    </view>
+  </search-modal>
+
+  <!-- 地点 -->
+  <search-modal id="modal_Address" fadeStyle="slideDown" height="460px" bindMeeage='close_Address'>
+    <view slot="modalContent">
+      <view class='yl-row allLocation'>
+        <view class='yl-fgrow1 province'>
+          <block wx:for='{{proList}}' wx:for-item='itemName' wx:key='proKey'>
+            <text class='{{pcheck==itemName.provinceId?"selected":""}}' data-Id='{{itemName.provinceId}}' bindtap='checkCity'>{{itemName.provinceName}}</text>
+          </block>
+        </view>
+        <view class='yl-fgrow1 city'>
+          <block wx:for='{{cityList}}' wx:for-item='itemName' wx:key='cityKey'>
+            <text class='{{ccheck==itemName.cityId?"selected":""}}' data-Id='{{itemName.cityId}}' data-text='{{itemName.cityName}}' bindtap='checkSearch'>{{itemName.cityName}}</text>
+          </block>
+        </view>
+      </view>
+      <view class='formBtn'>
+        <button bindtap='submit_Address'>确定</button>
+      </view>
+    </view>
+  </search-modal>
+
+  <!-- 公司 -->
+  <search-modal id="modal_company" fadeStyle="slideDown" height="475px" bindMeeage='close_Company'>
+    <view slot="modalContent">
+      <!-- 团队规模 -->
+      <view class='search_item'>
+        <view class='itemTitel'>团队规模</view>
+        <view class='itemContent' style='height:75px'>
+          <block wx:for='{{teamList}}' wx:for-item='item' wx:key='teamList'>
+            <text class='select-item {{teamSId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='teamCheack'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+
+
+      <!-- 行业 -->
+      <view class='search_item'>
+        <view class='itemTitel'>行业</view>
+        <view class='itemContent' style='height:266px'>
+          <block wx:for='{{industryList}}' wx:for-item='item' wx:key='industryList'>
+            <text class='select-item {{industrySId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='industryCheack'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+
+      <view class='formBtn'>
+        <button bindtap='submit_Company'>确定</button>
+      </view>
+
+    </view>
+  </search-modal>
+
+  <!-- 要求 -->
+  <search-modal id="modal_Requirement" fadeStyle="slideDown" height="415px" bindMeeage='close_Requirement'>
+    <view slot="modalContent">
+      <!-- 学历 -->
+      <view class='search_item'>
+        <view class='itemTitel'>学历</view>
+        <view class='itemContent'>
+          <block wx:for='{{educationList}}' wx:for-item='item' wx:key='education'>
+            <text class='select-item {{eduSId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='eduCheack'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+      <!-- 经验 -->
+      <view class='search_item'>
+        <view class='itemTitel'>经验</view>
+        <view class='itemContent'>
+          <block wx:for='{{experienceList}}' wx:for-item='item' wx:key='experience'>
+            <text class='select-item {{expSId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='expCheack'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+
+      <!-- 薪资 -->
+      <view class='search_item'>
+        <view class='itemTitel'>薪资</view>
+        <view class='itemContent'>
+          <block wx:for='{{salaryList}}' wx:for-item='item' wx:key='salary'>
+            <text class='select-item {{sSId==item.typeId?"selected":""}}' data-id='{{item.typeId}}' bindtap='salaryCheack'>{{item.typeName}}</text>
+          </block>
+        </view>
+      </view>
+
+      <view class='formBtn'>
+        <button bindtap='submit_Requirement'>确定</button>
+      </view>
+
+    </view>
+  </search-modal>
+
+</view>

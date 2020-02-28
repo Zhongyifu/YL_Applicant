@@ -1,1 +1,85 @@
-/* pages/tab_Message/tab_Message.wxss */
+.page_hd {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.hd_l {
+  width: 50%;
+  text-align: left;
+}
+
+.hd_l text {
+  font-size: 12px;
+}
+
+.hd_r {
+  width: 50%;
+  text-align: right;
+}
+
+.hd_r text {
+  font-size: 12px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+.page_bd .bd_item {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.page_bd .isEmpty{
+  text-align: center;
+  margin-top: 40px;
+}
+
+.bd_l image {
+  box-sizing: border-box;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.bd_r {
+  position: relative;
+  font-size: 14px;
+  color: #6d6e70;
+  margin-left: 10px;
+}
+
+.bd_r .bd_r_t {
+  margin-bottom: 10px;
+}
+
+.bd_r_t text {
+  margin-right: 10px;
+}
+
+.bd_r .lastTime {
+  float: right;
+  margin-right: 15px;
+}
+
+.bd_r .newstMessage {
+  width: 500rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.bd_r .unRead {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

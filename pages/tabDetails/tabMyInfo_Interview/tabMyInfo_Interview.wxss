@@ -1,0 +1,45 @@
+.beCheck {
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  color: #fff;
+}
+
+.page_bd {
+  /* border-top: 1px solid #c3c3c3; */
+  width: 90%;
+  margin: 0 auto;
+}
+
+.tab-list {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.tab-item {
+  width: 50%;
+  text-align: center;
+  border: 1px solid #c3c3c3;
+}
+
+.job-list {
+  margin-top: 10px;
+}
+
+.job-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.item-img {
+  margin-right: 8px;
+}
+
+.item-img image {
+  width: 55px;
+  height: 55px;
+}
+
+.item-info text {
+  margin: 0 5px;
+  font-size: 14px;
+}

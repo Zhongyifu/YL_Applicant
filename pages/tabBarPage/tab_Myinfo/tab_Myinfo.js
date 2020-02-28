@@ -3,50 +3,84 @@ var app = getApp();
 const url = app.globalData.baseUrl;
 Page({
   data: {
-    isRegister: false
+    isRegister: false,
+    myinfoData: ''
   },
   //跳转到注册页面
   nvaToRegister: function(e) {
     wx.navigateTo({
       url: '../../register/firstPage/register',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
     })
   },
-  onLoad: function(options) {
+  onShow: function(options) {
     let _that = this;
-    //在页面加载完成之后，发起请求判断用户是否登录或注册
-    wx.checkSession({
-      success: function(e) {
-        _that.setData({
-          isRegister: true
+    wx.getStorage({
+      key: 'wechat_session',
+      success: function(res) {
+        let sessionId = res.data.sessionId
+        wx.request({
+          url: url + 'applicantInfo/getMineInfo.json',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'Cookie': 'JSESSIONID=' + sessionId
+          },
+          success(res) {
+            let myinfoData = res.data.data;
+            _that.setData({
+              myinfoData: myinfoData
+            });
+          }
         });
       },
-      fail: function(e) {
-        //当用户的登录信息已经过期
-        _that.setData({
-          isRegister: false
-        });
-        //重新获得用户授权
-        wx.login({
-          success(res) {
-            if (res.code) {
-              //发起网络请求
-              wx.request({
-                url: url + 'login/miniProgramcLogin.json',
-                data: {
-                  code: res.code
-                },
-              })
-            } else {
-              console.log('登录失败！' + res.errMsg);
-            }
-          }
-        })
-      }
-    });
+    })
   },
-
-
+  // 我的简历
+  toMyResume:function(e){
+    wx.switchTab({
+      url: '../tab_Resume/tab_Resume',
+    })
+  },
+  // 沟通过
+  toLinkUp:function(e){
+    wx.navigateTo({
+      url: '../../tabDetails/tabMyInfo_JobList/tabMyInfo_JobList?key=linkUp',
+    })
+  },
+  // 面试
+  toInterview:function(e){
+    wx.navigateTo({
+      url: '../../tabDetails/tabMyInfo_Interview/tabMyInfo_Interview',
+    })
+  },
+  // 投递
+  toDeliver:function(e){
+    wx.navigateTo({
+      url: '../../tabDetails/tabMyInfo_JobList/tabMyInfo_JobList?key=deliver',
+    })
+  },
+  // 感兴趣 
+  toInterested:function(e){
+    wx.navigateTo({
+      url: '../../tabDetails/tabMyInfo_JobList/tabMyInfo_JobList?key=interested',
+    })
+  },
+  // 我的简历
+  toMyResume: function(e) {
+    wx.switchTab({
+      url: '../../tabBarPage/tab_Resume/tab_Resume',
+    })
+  },
+  // 管理求职意向
+  jobIntention: function(e) {
+    wx.navigateTo({
+      url: '../../register/sixthPage/workTag?key=update',
+    })
+  },
+  // 关注公司
+  focuseCompany:function(e){
+    wx.navigateTo({
+      url: '../../tabDetails/tabMyInfo_ComList/tabMyInfo_ComList',
+    })
+  },
 })

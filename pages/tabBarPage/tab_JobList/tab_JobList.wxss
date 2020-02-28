@@ -1,10 +1,21 @@
 /* pages/tabDetails/comJobList/comJobList.wxss */
 
-.btnList .searchIcon {
-  border-left: 1px solid white;
-  padding-left: 0.5rem;
-  margin-right: 1rem;
-  margin-left: 0.5rem;
+/* 遮罩层 */
+
+.unloadMask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #999;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  text-align: center;
+}
+
+.unloadMask image {
+  margin-top: 50%;
 }
 
 .btnList .icon-jiahao {
@@ -13,7 +24,7 @@
 }
 
 .orderList {
-  height: 2rem;
+  height: 3rem;
   text-align: center;
   line-height: 1.5rem;
   border-bottom: 1px solid #ccc;
@@ -30,14 +41,8 @@
 
 /* 顶部样式 end */
 
-.page__bd .listItem {
-  border-bottom: 5px solid #f2f2f2;
-  font-size: 1rem;
-  padding: 1rem 1rem 0.3rem 1rem;
-}
-
 .listItem view {
-  margin-bottom: 0.2rem;
+  margin-bottom: 8px;
 }
 
 .listItem .fl2 {
@@ -46,22 +51,12 @@
   color: #199ed8;
 }
 
-.listItem .sm-gray text {
-  margin-left: 0.5rem;
+.listItem .gray text {
+  margin-right: 10px;
 }
 
-.listItem .sm-gray .fl1 {
-  margin-left: 0rem;
-}
-
-.listItem .md-black text {
-  font-size: 28rpx;
-  color: #b7b7b7;
-}
-
-.listItem .sm-gray text {
-  font-size: 25rpx;
-  color: #c3c3c3;
+.listItem .itemInfo {
+  margin-bottom: 0;
 }
 
 /* HR头像 */
@@ -87,4 +82,25 @@
 
 .hrHp text {
   margin: 0 5rpx;
+}
+
+/* 公司，要求 */
+
+.search-modal .yl-fgrow1 text {
+  font-size: 12px;
+}
+
+.search_item .itemContent .select-item {
+  padding: 2px 5px;
+  border-radius: 0px;
+}
+
+.search_item .itemTitel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.search_item .itemContent {
+  overflow: scroll;
+  padding-top: 10px;
 }

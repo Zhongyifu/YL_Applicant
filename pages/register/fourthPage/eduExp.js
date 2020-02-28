@@ -1,99 +1,109 @@
-var util = require('../../../utils/util.js'),
-  app = getApp(),
-  url = app.globalData.baseUrl;
+const app = getApp();
+const url = app.globalData.baseUrl;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    eduList: [],
-    eduIndex: 0,
-    eduValue: '',
-    isEduSelected: false,
-    nowTime: "",
-    isStartChange: false,
-    startTime: '',
-    endTime: '',
-    isEndDChange: false,
+    eduExpList: [],
+    id_Code: "",
+    btnText: '下一步',
+    // 是否显示跳过按钮，注册流程
+    isRegister: true,
+    //是否存在已经填好的工作经验
+    isEmpty: false
   },
 
-  bEduChange: function(e) {
-    let _that = this;
-    _that.setData({
-      eduIndex: e.detail.value,
-      eduValue: e.currentTarget.dataset.eid,
-      isEduSelected: true
-    });
-  },
-  startDateChange: function(e) {
-    this.setData({
-      startTime: e.detail.value,
-      isStartChange: true
-    });
-  },
-  endDateChange: function(e) {
-    this.setData({
-      endTime: e.detail.value,
-      isEndDChange: true
-    });
-  },
-  onLoad: function(e) {
-    let _that = this;
-    let eduList = [];
-    //获取系统当前日期
-    let nowTime = util.formatTime(new Date());
-    _that.setData({
-      nowTime: nowTime,
-    });
-    wx.request({
-      url: url + 'educationalBackgroundType/findList.json',
-      success(res) {
-        eduList = res.data.data;
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    let _that=this;
+    wx.getStorage({
+      key: 'wechat_session',
+      success: function(res) {
+        let sessionId = res.data.sessionId;
+        let id_Code = options.key;
         _that.setData({
-          eduList: eduList,
-          isEduSelected: true
+          id_Code: id_Code,
+          sessionId: sessionId
         });
-      }
+        if (id_Code == 'update') {
+          // 当前用户已经添加的工作经验
+          wx.request({
+            url: url + 'educationExperience/getEducationExperienceList.json',
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Cookie': 'JSESSIONID=' + sessionId
+            },
+            success: res => {
+              _that.setData({
+                eduExpList: res.data.data,
+                isEmpty: false,
+                btnText: '保存',
+                isRegister: false
+              });
+            },
+            fail: res => {
+              _that.setData({
+                isEmpty: true
+              });
+            }
+          });
+        } else {
+          // 获取用户在添加页面所填写的工作经验数据
+          let storageDate = [];
+          // wx.clearStorageSync() //用于清空数据
+          storageDate = wx.getStorageSync('registerJson').educationExperienceList;
+          if (storageDate == undefined) {
+            storageDate = [];
+            _that.setData({
+              isEmpty: true
+            });
+          } else {
+            _that.setData({
+              isEmpty: false
+            });
+          }
+          _that.setData({
+            eduExpList: storageDate,
+            btnText: '下一步',
+            isRegister: true
+          });
+        }
+      },
     })
   },
-  //表单提交
-  registerForm: function(e) {
+
+  //下一页或者保存
+  nextTap: function(e) {
     let _that = this;
-    let formValue = {};
-    if (_that.data.eduValue == '') {
-      _that.data.eduValue = "01";
-    }
-    let dataList = [{
-      'schoolName': e.detail.value.schoolName,
-      'educationalBackgroundTypeId': _that.data.eduValue,
-      'majorName': e.detail.value.majorName,
-      'startTime': e.detail.value.sTime,
-      'endTime': e.detail.value.eTime
-    }];
-    formValue.educationExperienceList = dataList;
-    //将数据存储到缓存中
-    wx.setStorage('educationExperienceList', dataList);
-    wx.showModal({
-      title: '提示',
-      content: '还要继续添加教育经验吗？取消则前往下一步',
-      success(res) {
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '../fourthPage/eduExp',
-          })
-        } else if (res.cancel) {
-          wx.navigateTo({
-            url: '../fifthPage/myAdv',
-          })
-        }
+    if (_that.data.isRegister == true) {
+      //注册流程
+      if (_that.data.eduExpList == []) {
+        wx.showModal({
+          title: '提示',
+          content: '您还未填写一份教育经验，确定要前往下一页吗？',
+          success: res => {
+            if (res.confirm) {
+              wx.navigateTo({
+                url: '../fifthPage/myAdv?key=register',
+              });
+            }
+          }
+        })
+      } else {
+        wx.navigateTo({
+          url: '../fifthPage/myAdv?key=register',
+        });
       }
-    });
-  },
-  //跳过次页
-  skipTap: function(e) {
-    wx.navigateTo({
-      url: '../fifthPage/myAdv',
-    });
+    } else {
+      //更新流程,返回到更新入口的页面
+      wx.navigateTo({
+        // url: '',
+      });
+    }
   },
 })

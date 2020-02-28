@@ -3,135 +3,142 @@
 
   <view class='page__hd'>
     <view class='yl-row center-view'>
-      <view class='yl-fgrow1'>
-        <icon class='iconfont icon-xiugai'></icon>
-        <text>修改简历</text>
-      </view>
-      <view class='yl-fgrow1'>
-        <icon class='iconfont icon-wenjian'></icon>
-        <text>附件简历</text>
-      </view>
+      <text class="text-md gray">是否公开简历：</text>
+      <switch typ='switch' checked='{{resumeData.isHide =="0"?false:true}}' bindchange="switchChange" />
     </view>
   </view>
-
-
 
   <view class='page__bd'>
 
+    <!-- myName -->
     <view class='section center-view myInfo'>
-      <view class='yl-row'>
-      
-        <view class='yl-fgrow2'>
-          <view class='lg-black'>
-            <text>简历人</text>
-          </view>
+      <view class='body yl-row'>
 
-          <view class='md-gray'>
-            <text>当前职位</text>
+        <view class='yl-fgrow2'>
+          <text class="section_Title">{{resumeData.applicantName }}</text>
+          <view>
+            <text>{{resumeData.nowCompany}}</text>
             <text>\t·\t</text>
-            <text>当前就职公司</text>
+            <text>{{resumeData.nowJob}}</text>
           </view>
 
         </view>
 
-        <view class='hP'>
-          <image src='../../../images/hP.jpg' mode='scaleToFill'></image>
+        <view class='hp'>
+          <image src='{{ resumeData.applicantPortrait }}' mode='scaleToFill'></image>
         </view>
 
       </view>
     </view>
 
-    <view class='section center-view myJob md-black'>
-      <view class='myJobTitle'>
-        <text>在职</text>
-        <text>\t - \t</text>
-        <text>暂不考虑</text>
+    <!-- myInfo -->
+    <view class='section center-view'>
+      <view>
+        <text class="fontSix gray-d text-lg">{{resumeData.jobStatusTypeName}}</text>
       </view>
 
       <view class='myJobItem'>
-        <icon class='iconfont icon-rili'></icon>
-        <text>25岁</text>
-        <icon class='iconfont icon-xueli'></icon>
-        <text>大专</text>
-        <icon class='iconfont icon-lingdai'></icon>
-        <text>5年</text>
-        <view>
-          <text>自我介绍:自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍自我介绍</text>
-        </view>
-      </view>
-    </view>
-
-    <view class='section center-view md-black myJobExpect '>
-      <view>
-        <text class='fontSix'>求职期望</text>
-      </view>
-      <view class='yl-row'>
-        <view class='yl-fgrow2'>
-          <text>Java</text>
-          <text>广州</text>
-        </view>
-        <view class='expMoneny'>
-          <text>11K</text>
-          <text>\t - \t</text>
-          <text>12K</text>
-        </view>
-      </view>
-      <view class='md-gray jobExpect'>
-        <text>行业不限</text>
-      </view>
-    </view>
-
-    <view class='section center-view md-black myJobExp'>
-      <view>
-        <text class='fontSix'>工作经验</text>
-      </view>
-
-      <view class='yl-row'>
-        <view class='yl-fgrow2'>
-          <text>就职过的公司名称</text>
+        <view class="tipList yl-row">
+          <view class="position">
+            <icon class='iconfont icon-rili'></icon>
+            <text>{{resumeData.applicantAge}}岁</text>
+          </view>
+          <view class="position">
+            <icon class='iconfont icon-xueli'></icon>
+            <text>{{resumeData.educationalBackgroundName}}</text>
+          </view>
+          <view class="position">
+            <icon class='iconfont icon-lingdai'></icon>
+            <text>{{resumeData.workingDate}}年</text>
+          </view>
         </view>
         <view>
-          <text>当时的职位</text>
-        </view>
-      </view>
-
-      <view>
-        <text>2017.01.02</text>
-        <text>\t - \t</text>
-        <text>2017.01.02</text>
-      </view>
-
-      <view class='workTag'>
-        <view class='workDetails'>
-          <text class='fontSix'>工作内容：</text>
-          <text class='md-gray'>工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容</text>
-        </view>
-        <view class='tagItem'>
-          <text>标签文字</text>
-          <text>标签文字</text>
-          <text>标签文字</text>
+          <text>{{resumeData.applicantAdvantage}}</text>
         </view>
       </view>
     </view>
 
-    <view class='section center-view md-black myEduExp '>
-      <view>
-        <text class='fontSix'>教育经验</text>
+    <!-- jobInt -->
+    <view class='section center-view'>
+      <view class="position">
+        <text class="bluePoint">●</text>
+        <text class='fontSix gray-d text-lg'>\t 求职期望</text>
       </view>
+      <block wx:for="{{resumeData.jobIntentionList}}" wx:key="{{index}}">
+        <view class='jobIntention'>
+          <view class='yl-row'>
+            <view class='yl-fgrow2'>
+              <text class="fontSix text-md gray-d">\t{{item.jobThreeName}}\t</text>
+            </view>
+            <view>
+              <text class="fontSix text-md blue">{{item.salaryRangeTypeName}}</text>
+            </view>
+          </view>
+          <view>
+            <text style="margin-right:5px;">\t{{item.cityName}}</text>
+            <text>{{item.tradeTypeName}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
 
-      <view class='sName'>
-        <text>就读过的学校名字</text>
+    <!-- jobExp -->
+    <view class='section center-view'>
+      <view class="position">
+        <text class="bluePoint">●</text>
+        <text class='fontSix gray-d text-lg'>\t工作经验</text>
       </view>
+      <block wx:for="{{resumeData.workExperienceList}}" wx:for-index="idx" wx:for-item="itemName" wx:key="{{idx}}">
+        <view class='jobExp'>
 
-      <view class='md-gray'>
-        <text>学历</text>
-        <text>\t · \t</text>
-        <text>院系</text>
+          <view class='yl-row'>
+            <view class='yl-fgrow2'>
+              <text class="fontSix text-md gray-d">\t{{itemName.companyName}}</text>
+            </view>
+            <view>
+              <text>{{itemName.startTime}}</text>
+              <text>\t 至 \t</text>
+              <text>{{itemName.endTime}}</text>
+            </view>
+          </view>
+
+          <view class="expItem">
+            <text class="fontSix text-md gray-d">{{itemName.jobThreeName}}</text>
+          </view>
+
+          <view class='expItem workTag'>
+            <view class='workDetails'>
+              <text>工作内容：</text>
+              <text class='text-md gray-d'>{{itemName.jobContent}}</text>
+            </view>
+            <view class='tagItem'>
+              <text wx:for="{{itemName.skillLabelList}}" wx:for-item="skill" wx:key="{{skill}}">{{skill.labelName}}</text>
+            </view>
+          </view>
+
+        </view>
+      </block>
+    </view>
+
+    <!-- eduExp -->
+    <view class='section center-view eduExpP'>
+      <view class="position">
+        <text class="bluePoint">●</text>
+        <text class='fontSix gray-d text-lg'>\t教育经验</text>
       </view>
+      <block wx:for="{{resumeData.educationExperienceList}}" wx:for-index="idx" wx:for-item="itemName" wx:key="{{idx}}">
+        <view class="eduExp">
+          <text class="fontSix text-md gray-d" style="margin-bottom:5px;">{{itemName.schoolName}}</text>
 
+          <view>
+            <text>{{itemName.majorName}}</text>
+            <text>\t · \t</text>
+            <text>{{itemName.educationalBackgroundTypeName}}</text>
+          </view>
+        </view>
+      </block>
     </view>
 
   </view>
-
 
 </view>
